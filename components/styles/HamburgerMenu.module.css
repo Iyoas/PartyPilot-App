@@ -1,0 +1,27 @@
+.hamburger{
+    width: 6vw; /* 10% van de viewport breedte */
+    height: auto; /* Hoogte automatisch schalen volgens aspectratio */
+}
+
+.hamburgerContainer {
+    cursor: pointer;
+    /* Voeg andere stijlen toe voor de container van de hamburger */
+  }
+  
+
+  
+  .menu {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    /* Voeg andere stijlen toe voor het menu */
+  }
+  
+  .menu a {
+    display: block;
+    padding: 10px;
+    /* Voeg andere stijlen toe voor de menu-items */
+  }
+  
