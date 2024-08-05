@@ -9,7 +9,7 @@ const Header = () => {
             <Image
                   src="/images/logo.svg" // Pad naar je logo in de public map
                   alt="Site Logo"
-                  width={250} // Pas de breedte aan naar behoefte
+                  width={250} // Pas d breedte aan naar behoefte
                   height={250} // Pas de hoogte aan naar behoefte
                 />
           </div>
