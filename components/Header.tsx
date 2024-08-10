@@ -1,18 +1,40 @@
-import React from 'react';
-import Image from 'next/image';
-import styles from './styles/Header.module.css'; 
+'use client';
 
+import React, { useState } from 'react';
+import Image from 'next/image';
+import { IoMenu } from 'react-icons/io5';
+import { RxCross1 } from 'react-icons/rx';
+import styles from './styles/Header.module.css';
+import HamburgerMenu from '../components/HamburgerMenu';
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+    console.log('Menu toggled. Is open:', !isOpen);
+  };
+
   return (
-          <div className={styles.logo}>  
+    <div className={isOpen ? styles.menuOpen : ''}> {/* Apply a class when the menu is open */}
+      {!isOpen && (
+        <div className={styles.header}>
+          <div className={styles.logo}>
             <Image
-                  src="/images/logo.svg" // Pad naar je logo in de public map
-                  alt="Site Logo"
-                  width={250} // Pas d breedte aan naar behoefte
-                  height={250} // Pas de hoogte aan naar behoefte
-                />
+              src="/images/logo.svg"
+              alt="Site Logo"
+              width={225}
+              height={225}
+              priority 
+            />
           </div>
+          <div className={styles.hamburgerContainer} onClick={toggleMenu}>
+            <IoMenu className={styles.hamburger} />
+          </div>
+        </div>
+      )}
+      {isOpen && <HamburgerMenu toggleMenu={toggleMenu} />} {/* Pass the toggleMenu prop */}
+    </div>
   );
 };
 

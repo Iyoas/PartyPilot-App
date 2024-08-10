@@ -1,27 +1,68 @@
-.hamburger{
-    width: 6vw; /* 10% van de viewport breedte */
-    height: auto; /* Hoogte automatisch schalen volgens aspectratio */
+.HeaderOfMenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
-.hamburgerContainer {
-    cursor: pointer;
-    /* Voeg andere stijlen toe voor de container van de hamburger */
-  }
-  
+.CrossContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10%;
+}
 
-  
-  .menu {
-    position: absolute;
-    top: 60px;
-    right: 0;
-    background: white;
-    border: 1px solid #ccc;
-    /* Voeg andere stijlen toe voor het menu */
-  }
-  
-  .menu a {
-    display: block;
-    padding: 10px;
-    /* Voeg andere stijlen toe voor de menu-items */
-  }
-  
+.cross {
+  width: 8vw;
+  height: auto;
+  color: #D0D0D0;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background-color: #fbfbfb;
+
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.menuList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  padding-top: 50px; 
+}
+
+.menuList a {
+  color: black;
+  background-color: #F5F5F5;
+  width: 90%;
+  font-size: 1rem;
+  margin: 0.2rem;
+  text-decoration: none;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  border-radius: 5px;
+  padding: 3%;
+  padding-left: 20px;
+}
+
+.menuList a.special {
+  background-color: #E2E9FF;
+  color: #3D70F5;
+  padding: 4%;
+  padding-left: 23px;
+  margin-top: -100%;
+}
+.right_arrow{
+  font-size: 1em;
+  color: #999999;
+}

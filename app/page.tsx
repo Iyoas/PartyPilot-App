@@ -1,9 +1,11 @@
-import HamburgerMenu from '../components/HamburgerMenu'
+import Layout from './layout';
 
 export default function HomePage() {
   return (
-    <main>
-        <HamburgerMenu/>
-    </main>
+    <Layout>
+      <div>
+    
+      </div>
+    </Layout>
   );
 }

@@ -1,29 +1,41 @@
-'use client'; // Dit markeert dit bestand als een Client Component
+'use client';
 
-import React, { useState } from 'react';
-import { GiHamburgerMenu } from 'react-icons/gi'; // Zorg ervoor dat je react-icons hebt geïnstalleerd
-import styles from './styles/HamburgerMenu.module.css'; 
+import React from 'react';
+import Image from 'next/image';
+import { RxCross1 } from 'react-icons/rx';
+import styles from './styles/HamburgerMenu.module.css';
+import styles2 from './styles/Header.module.css';
+import { MdOutlineArrowForwardIos,MdOutlineFestival } from "react-icons/md";
+import { IoTicketSharp } from "react-icons/io5";
 
-const HamburgerMenu = () => {
-  const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+interface HamburgerMenuProps {
+  toggleMenu: () => void;
+}
 
+const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ toggleMenu }) => {
   return (
-    <div>
-      <div className={styles.hamburgerContainer} onClick={toggleMenu}>
-        <GiHamburgerMenu className={styles.hamburger} />
-      </div>
-      {isOpen && (
-        <div className={styles.menu}>
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#contact">Contact</a>
+    <div className={styles.menu}>
+      <div className={styles.HeaderOfMenu}>
+        <div className={styles2.logo}>
+          <Image
+            src="/images/logo.svg"
+            alt="Site Logo"
+            width={225}
+            height={225}
+            priority 
+          />
         </div>
-      )}
+        <div className={styles.CrossContainer} onClick={toggleMenu}>
+          <RxCross1 className={styles.cross} />
+        </div>
+      </div>
+      <div className={styles.menuList}>
+      <a href="#add" className={styles.special}>Event toevoegen <IoTicketSharp /> </a>
+        <a href="#agenda">Party Agenda <MdOutlineArrowForwardIos className={styles.right_arrow}/> </a>
+        <a href="#services">Over ons<MdOutlineArrowForwardIos className={styles.right_arrow}/> </a>
+        <a href="#contact">Contact <MdOutlineArrowForwardIos className={styles.right_arrow}/> </a>
+      </div>
     </div>
   );
 };
