@@ -1,0 +1,51 @@
+/* styles/ImageSlider.module.css */
+
+.sliderContainer {
+    position: relative;
+    width: 100%;
+    height: 60vh; /* Of elke andere gewenste hoogte */
+    overflow: hidden;
+    margin-top: 2%; /* Ruimte tussen slider en flyer */
+  }
+  
+  .slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  
+  .flyerImage {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+  }
+  
+  .indicator {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .activeIndicator {
+    background-color: rgba(0, 0, 0, 1);
+  }
+  
