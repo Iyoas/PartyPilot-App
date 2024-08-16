@@ -3,11 +3,12 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useSwipeable } from 'react-swipeable';
-import styles from './styles/FlyerSection.module.css'; // Zorg ervoor dat dit pad correct is
+import styles from './styles/FlyerSection.module.css'; 
 
 const slides = [
   '/images/7fest2022.jpg',
-  '/images/csc.jpg'
+  '/images/csc.jpg',
+  '/images/7fest2022.jpg'
 ];
 
 const ImageSlider = () => {
@@ -18,7 +19,7 @@ const ImageSlider = () => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
     }, 4000); // 4000 ms = 4 seconden
 
-    return () => clearInterval(interval); // Verwijder interval bij component unmount
+    return () => clearInterval(interval); 
   }, []);
 
   const goToSlide = (index: number) => {
@@ -44,8 +45,8 @@ const ImageSlider = () => {
               alt={`Slide ${index + 1}`}
               layout="intrinsic" // Gebruik 'intrinsic' om de afbeelding in zijn oorspronkelijke grootte te laden
               className={styles.flyerImage}
-              width={1200} // Geef hier een breedte op die je wilt
-              height={800} // Geef hier een hoogte op die je wilt
+              width={1200} 
+              height={800} 
             />
           </div>
         ))}
