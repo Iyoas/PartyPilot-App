@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;600&display=swap');
+
+.topEventSection {
+  padding: 20px; /* Voeg padding toe aan alle kanten */
+  text-align: center; /* Centreer de tekst in de container */
+}
+
+.sectionTitle {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600; /* Semi Bold */
+  font-size: 26px; /* Pas de grootte van de tekst aan */
+  color: black;
+  margin-bottom: 20px; /* Voeg ruimte toe onder de koptekst */
+}
+
+.eventContainer {
+  display: flex;
+  overflow-x: auto;
+  height: 31vh;
+  width: 100%;
+  justify-content: center; /* Centreer de evenementen in de container */
+}
+
+.event {
+  padding: 10px;
+  flex: 0 0 auto;
+  margin-right: 16px; /* Adjust spacing between events as needed */
+}
+
+.event img {
+  object-fit: cover; /* Zorg ervoor dat de afbeelding correct wordt bijgesneden */
+  width: 100%; /* Pas de breedte aan */
+  height: auto; /* Pas de hoogte aan */
+  border-radius: 5px; /* Voeg border-radius toe als in FlyerSection */
+}
+
+.eventDetails {
+  display: flex;
+  justify-content: space-between; /* Verdeel de ruimte tussen de items */
+  align-items: center; /* Centreer de items verticaal */
+  width: 100%; /* Zorg ervoor dat de container de volledige breedte inneemt */
+}
+
+.eventDetails h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600; /* Set to Semi Bold */
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.eventDetails p {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200; /* Set to Regular */
+  font-size: 14px;
+  margin-top: -10px;
+  /* color: gray */
+}
+
+.eventImage {
+  width: 100%; /* Pas de breedte aan */
+  height: auto; /* Pas de hoogte aan */
+  border-radius: 5px; /* Voeg border-radius toe als in FlyerSection */
+}
+
+.heartIcon {
+  width: 24px; /* Pas de grootte van het icoon aan */
+  height: 24px;
+  margin-left: 10px; /* Voeg ruimte toe tussen de tekst en het icoon */
+}
