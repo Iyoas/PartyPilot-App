@@ -1,16 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;600&display=swap');
 
 .topEventSection {
-  padding: 20px; /* Voeg padding toe aan alle kanten */
-  text-align: center; /* Centreer de tekst in de container */
+  padding: 20px; 
+  text-align: center;
 }
 
 .sectionTitle {
   font-family: 'Poppins', sans-serif;
-  font-weight: 600; /* Semi Bold */
-  font-size: 26px; /* Pas de grootte van de tekst aan */
+  font-weight: 600;
+  font-size: 26px; 
   color: black;
-  margin-bottom: 20px; /* Voeg ruimte toe onder de koptekst */
+  margin-bottom: 20px;
 }
 
 .eventContainer {
@@ -18,27 +19,27 @@
   overflow-x: auto;
   height: 31vh;
   width: 100%;
-  justify-content: center; /* Centreer de evenementen in de container */
+  justify-content: center;
 }
 
 .event {
   padding: 10px;
   flex: 0 0 auto;
-  margin-right: 16px; /* Adjust spacing between events as needed */
+  margin-right: 16px;
 }
 
 .event img {
-  object-fit: cover; /* Zorg ervoor dat de afbeelding correct wordt bijgesneden */
-  width: 100%; /* Pas de breedte aan */
-  height: auto; /* Pas de hoogte aan */
-  border-radius: 5px; /* Voeg border-radius toe als in FlyerSection */
+  object-fit: cover; 
+  width: 100%; 
+  height: auto; 
+  border-radius: 5px;
 }
 
 .eventDetails {
   display: flex;
-  justify-content: space-between; /* Verdeel de ruimte tussen de items */
-  align-items: center; /* Centreer de items verticaal */
-  width: 100%; /* Zorg ervoor dat de container de volledige breedte inneemt */
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .eventDetails h2 {
@@ -57,13 +58,14 @@
 }
 
 .eventImage {
-  width: 100%; /* Pas de breedte aan */
-  height: auto; /* Pas de hoogte aan */
-  border-radius: 5px; /* Voeg border-radius toe als in FlyerSection */
+  width: 100%;
+  height: auto;
+  border-radius: 5px; 
 }
 
 .heartIcon {
-  width: 24px; /* Pas de grootte van het icoon aan */
+  width: 24px;
   height: 24px;
-  margin-left: 10px; /* Voeg ruimte toe tussen de tekst en het icoon */
+  margin-left: 10px;
+ fill: gray;
 }
