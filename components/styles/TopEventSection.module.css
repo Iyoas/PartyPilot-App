@@ -1,10 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;600&display=swap');
 
-.topEventSection {
-  padding: 20px; 
-  text-align: center;
-}
+
 
 .sectionTitle {
   font-family: 'Poppins', sans-serif;
@@ -67,5 +64,5 @@
   width: 24px;
   height: 24px;
   margin-left: 10px;
- fill: gray;
+  stroke: gray;
 }
