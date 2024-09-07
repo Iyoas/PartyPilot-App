@@ -18,11 +18,11 @@ export default function HomePage() {
   }
 
   return (
-    <Layout>
-      <div className="bodyContainer">
-        <HeroSection />
-        <TopEventSection />
-      </div>
-    </Layout>
+      <Layout>
+        <div className="bodyContainer">
+          <HeroSection />
+          <TopEventSection />
+        </div>
+      </Layout>
   );
 }
