@@ -4,10 +4,11 @@
     justify-content: center;
     position: relative;
     flex-direction: column;
+    gap:3em;
 }
 .HeroSection2{
+
     display: flex;
     width: 100%;
     flex-direction: column;
-
 }
