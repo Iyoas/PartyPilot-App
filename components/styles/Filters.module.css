@@ -3,7 +3,7 @@
     flex-direction: row;
     align-items: center; /* Zorgt ervoor dat alle items verticaal gecentreerd zijn */
     gap: 0.75rem; 
-    padding: 1rem;
+    padding: 1.6rem;
     overflow-x: auto;
     white-space: nowrap;
     width: 100%;
