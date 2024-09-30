@@ -1,6 +1,6 @@
 const events = [
   {
-    datum1: 'vrijdag 11 oktober 2024',
+    datum1: 'vrijdag 11 oktober',
     dag: 'VR',
     nummerMaand: '11 okt',
     naam: 'LOVE IS ALL',
@@ -9,7 +9,7 @@ const events = [
     link: 'https://www.youtube.com',
   },
   {
-    datum1: 'vrijdag 11 oktober 2024',
+    datum1: 'vrijdag 11 oktober',
     dag: 'VR',
     nummerMaand: '11 okt',
     naam: 'Techno Night',
@@ -18,7 +18,7 @@ const events = [
     link: 'https://www.youtube.com',
   },
   {
-    datum1: 'vrijdag 11 oktober 2024',
+    datum1: 'vrijdag 11 oktober',
     dag: 'VR',
     nummerMaand: '11 okt',
     naam: 'Pop Up Jazz',
@@ -27,7 +27,7 @@ const events = [
     link: 'https://www.youtube.com',
   },
   {
-    datum1: 'zaterdag 12 oktober 2024',
+    datum1: 'zaterdag 12 oktober',
     dag: 'ZA',
     nummerMaand: '12 okt',
     naam: 'The Underground Soul Train - Invites David Dam',
@@ -36,7 +36,7 @@ const events = [
     link: 'https://www.youtube.com',
   },
   {
-    datum1: 'zaterdag 12 oktober 2024',
+    datum1: 'zaterdag 12 oktober',
     dag: 'ZA',
     nummerMaand: '12 okt',
     naam: 'LEGENDS of ROCK Tribute Festival',
@@ -45,7 +45,7 @@ const events = [
     link: 'https://www.youtube.com',
   },
   {
-    datum1: 'zaterdag 12 oktober 2024',
+    datum1: 'zaterdag 12 oktober',
     dag: 'ZA',
     nummerMaand: '12 okt',
     naam: 'House Music Madness',
@@ -54,7 +54,7 @@ const events = [
     link: 'https://www.youtube.com',
   },
   {
-    datum1: 'zaterdag 12 oktober 2024',
+    datum1: 'zaterdag 12 oktober',
     dag: 'ZA',
     nummerMaand: '12 okt',
     naam: 'Festival of Lights',
@@ -63,7 +63,7 @@ const events = [
     link: 'https://www.youtube.com',
   },
   {
-    datum1: 'zaterdag 19 oktober 2024',
+    datum1: 'zaterdag 19 oktober',
     dag: 'ZA',
     nummerMaand: '19 okt',
     naam: 'Disco Fever met o.a. NPO radio dj Corné Klijn',
@@ -72,7 +72,7 @@ const events = [
     link: 'https://www.youtube.com',
   },
   {
-    datum1: 'zaterdag 19 oktober 2024',
+    datum1: 'zaterdag 19 oktober',
     dag: 'ZA',
     nummerMaand: '19 okt',
     naam: 'Latin Dance Party',
@@ -81,7 +81,7 @@ const events = [
     link: 'https://www.youtube.com',
   },
   {
-    datum1: 'vrijdag 25 oktober 2024',
+    datum1: 'vrijdag 25 oktober',
     dag: 'VR',
     nummerMaand: '25 okt',
     naam: 'LEGENDS of ROCK Tribute Tour De Vorstin Hilversum',
@@ -90,7 +90,7 @@ const events = [
     link: 'https://www.youtube.com',
   },
   {
-    datum1: 'vrijdag 25 oktober 2024',
+    datum1: 'vrijdag 25 oktober',
     dag: 'VR',
     nummerMaand: '25 okt',
     naam: 'Jazz Night',
@@ -99,7 +99,7 @@ const events = [
     link: 'https://www.youtube.com',
   },
   {
-    datum1: 'zaterdag 9 november 2024',
+    datum1: 'zaterdag 9 november',
     dag: 'ZA',
     nummerMaand: '9 nov',
     naam: 'Latin Live',
@@ -108,7 +108,7 @@ const events = [
     link: 'https://www.youtube.com',
   },
   {
-    datum1: 'zaterdag 9 november 2024',
+    datum1: 'zaterdag 9 november',
     dag: 'ZA',
     nummerMaand: '9 nov',
     naam: 'Rock the City',
@@ -117,7 +117,7 @@ const events = [
     link: 'https://www.youtube.com',
   },
   {
-    datum1: 'zaterdag 16 november 2024',
+    datum1: 'zaterdag 16 november',
     dag: 'ZA',
     nummerMaand: '16 nov',
     naam: 'Vroeg Feest Zwolle',
@@ -126,7 +126,7 @@ const events = [
     link: 'https://www.youtube.com',
   },
   {
-    datum1: 'zaterdag 16 november 2024',
+    datum1: 'zaterdag 16 november',
     dag: 'ZA',
     nummerMaand: '16 nov',
     naam: 'Hip Hop Legends',
@@ -135,7 +135,7 @@ const events = [
     link: 'https://www.youtube.com',
   },
   {
-    datum1: 'zaterdag 23 november 2024',
+    datum1: 'zaterdag 23 november',
     dag: 'ZA',
     nummerMaand: '23 nov',
     naam: 'LEGENDS of ROCK Tribute Festival XL Bonte Wever',
@@ -144,7 +144,7 @@ const events = [
     link: 'https://www.youtube.com',
   },
   {
-    datum1: 'vrijdag 29 november 2024',
+    datum1: 'vrijdag 29 november',
     dag: 'VR',
     nummerMaand: '29 nov',
     naam: 'LEGENDS of ROCK Tribute Tour in Gebouw-T',
@@ -153,7 +153,7 @@ const events = [
     link: 'https://www.youtube.com',
   },
   {
-    datum1: 'vrijdag 29 november 2024',
+    datum1: 'vrijdag 29 november',
     dag: 'VR',
     nummerMaand: '29 nov',
     naam: 'Reggae Night',
@@ -162,7 +162,7 @@ const events = [
     link: 'https://www.youtube.com',
   },
   {
-    datum1: 'zaterdag 30 november 2024',
+    datum1: 'zaterdag 30 november',
     dag: 'ZA',
     nummerMaand: '30 nov',
     naam: 'LEGENDS of ROCK Tribute Festival XXL in AHOY',
@@ -171,7 +171,7 @@ const events = [
     link: 'https://www.youtube.com',
   },
   {
-    datum1: 'zaterdag 30 november 2024',
+    datum1: 'zaterdag 30 november',
     dag: 'ZA',
     nummerMaand: '30 nov',
     naam: 'Winter Wonderland Dance',
@@ -180,7 +180,7 @@ const events = [
     link: 'https://www.youtube.com',
   },
   {
-    datum1: 'donderdag 12 december 2024',
+    datum1: 'donderdag 12 december',
     dag: 'DO',
     nummerMaand: '12 dec',
     naam: 'De Kerstpakketmarkt',
@@ -189,7 +189,7 @@ const events = [
     link: 'https://www.youtube.com',
   },
   {
-    datum1: 'donderdag 12 december 2024',
+    datum1: 'donderdag 12 december',
     dag: 'DO',
     nummerMaand: '12 dec',
     naam: 'Christmas Jazz',
@@ -198,7 +198,7 @@ const events = [
     link: 'https://www.youtube.com',
   },
   {
-    datum1: 'vrijdag 13 december 2024',
+    datum1: 'vrijdag 13 december',
     dag: 'VR',
     nummerMaand: '13 dec',
     naam: 'MOOON',
@@ -207,7 +207,7 @@ const events = [
     link: 'https://www.youtube.com',
   },
   {
-    datum1: 'vrijdag 13 december 2024',
+    datum1: 'vrijdag 13 december',
     dag: 'VR',
     nummerMaand: '13 dec',
     naam: 'Funky Friday',
@@ -216,7 +216,7 @@ const events = [
     link: 'https://www.youtube.com',
   },
   {
-    datum1: 'zaterdag 14 december 2024',
+    datum1: 'zaterdag 14 december',
     dag: 'ZA',
     nummerMaand: '14 dec',
     naam: 'Eclipse',
@@ -225,7 +225,7 @@ const events = [
     link: 'https://www.youtube.com',
   },
   {
-    datum1: 'zaterdag 14 december 2024',
+    datum1: 'zaterdag 14 december',
     dag: 'ZA',
     nummerMaand: '14 dec',
     naam: 'Saturday Night Fever',

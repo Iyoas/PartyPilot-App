@@ -8,14 +8,15 @@
     white-space: nowrap;
     width: 100%;
     position: relative; 
-    z-index: 999999;
+    z-index: 10000;
+
 }
 
 .FilterStripes {
-    font-size: 24px; /* Pas de grootte van je icoon aan indien nodig */
+    font-size: 24px; 
     display: flex;
     align-items: center; /* Zorg ervoor dat het icoon gecentreerd is ten opzichte van de knoppen */
-    margin-right: 1rem; /* Ruimte tussen het icoon en de knoppen */
+    margin-right: 5rem; /* Ruimte tussen het icoon en de knoppen */
 }
 
 

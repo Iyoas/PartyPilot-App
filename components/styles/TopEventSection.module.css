@@ -8,15 +8,16 @@
   font-weight: 600;
   font-size: 26px; 
   color: black;
-  padding: 1em;
+  padding: 0.7em;
+ 
 }
 
 .eventContainer {
   display: flex;
   overflow-x: auto;
-  height: 31vh;
+  height: 36vh;
   width: 100%;
-  justify-content: center;
+  padding: 0.7em;
 }
 
 .event {
@@ -29,7 +30,7 @@
   object-fit: cover; 
   width: 100%; 
   height: auto; 
-  border-radius: 5px;
+  border-radius: 5px 5px 0px 0px;
 }
 
 .eventDetails {
@@ -37,6 +38,9 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  background: rgba(240, 240, 240, 0.678);
+  height:8vh;
+  border-radius: 0px 0px 5px 5px;
 }
 
 .eventDetails h2 {
@@ -44,6 +48,7 @@
   font-weight: 600; 
   font-size: 16px;
   margin: 5px 0;
+  margin-left: 10px;
 }
 
 .eventDetails p {
@@ -51,6 +56,7 @@
   color: rgba(0, 0, 0, 0.6);
   font-style: italic;
   margin-top: -10px;
+  margin-left: 10px;
 }
 
 .eventImage {
@@ -62,6 +68,6 @@
 .heartIcon {
   width: 24px;
   height: 24px;
-  margin-left: 10px;
+  margin-right: 10px;
   stroke: gray;
 }

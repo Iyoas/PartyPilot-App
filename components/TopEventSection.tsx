@@ -6,9 +6,14 @@ import styles from './styles/TopEventSection.module.css';
 
 const events = [
   {
+    image: '/images/csc.jpg',
+    name: 'CSC Festival',
+    location: 'di 31 dec, Amsterdam',
+  },
+  {
     image: '/images/7fest2022.jpg',
-    name: '7 Fest 2022',
-    location: 'za 19 okt, Den Haag',
+    name: '7 Fest 2023',
+    location: 'ma 24 mei, Rotterdam',
   },
   {
     image: '/images/csc.jpg',

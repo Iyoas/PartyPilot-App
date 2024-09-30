@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import styles from './styles/SearchBar.module.css'; 
 import products from "@/app/products";
+import { FaSearch } from "react-icons/fa";
 
 // Definieer het type voor een product
 interface Product {
@@ -35,26 +36,19 @@ const SearchBar: React.FC = () => {
   };
 
   return (
-    <div className={styles.autocomplete}>
-      <input
-        type="text"
-        className={styles.input}
-        value={inputValue}
-        onChange={handleInputChange}
-        placeholder="Zoek op artiest, event, locatie...."
-      />
-      <ul>
-        {suggestions.map((suggestion, index) => (
-          <li className={styles.item} key={index}>
-            <img
-              src={`http://unsplash.it/100?random=${index}`}
-              alt="Random Picture"
-            />
-            <p>{suggestion.title}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
+<div className={styles.autocomplete}>
+  <input
+    type="text"
+    className={styles.input}
+    value={inputValue}
+    onChange={handleInputChange}
+    placeholder="Zoek op artiest, event, locatie...."
+  />
+  <button className={styles.SearchButton} aria-label="Search">
+    <FaSearch />
+  </button>
+</div>
+
   );
 };
 
