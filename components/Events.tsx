@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './styles/Events.module.css';
 import events from "@/app/events"; // Zorg ervoor dat dit het juiste pad naar je mock data is
+import Link from 'next/link'; // Importeer de Link component
 
 // Definieer het type voor een evenement
 interface Event {
@@ -12,14 +13,13 @@ interface Event {
   naam: string;
   stad: string;
   flyer: string;
-  link: string; // Toegevoegd veld voor de link
+  link: string; // Dit veld is nu niet meer nodig
 }
 
 const Events: React.FC = () => {
-  const [eventList, setEventList] = useState<Event[]>([]); // Gebruik het Event type hier
+  const [eventList, setEventList] = useState<Event[]>([]);
 
   useEffect(() => {
-    // Simuleer het ophalen van evenementen
     const fetchEvents = async () => {
       setEventList(events);
     };
@@ -43,21 +43,18 @@ const Events: React.FC = () => {
         {Object.entries(groupedEvents).map(([date, events]) => (
           <div key={date} className={styles.EventItem}>
             <div className={styles.DayHeader}>{date}</div>
-            {events.map((event, index) => (
-              <div
-                key={index}
-                className={styles.Event}
-                onClick={() => (window.location.href = event.link)} // Navigeren naar de link in hetzelfde tabblad
-                style={{ cursor: 'pointer' }} 
-              >
-                <img src={event.flyer} alt={event.naam} className={styles.Flyer} />
-                <div className={styles.EventDetails}>
-                  <h3 className={styles.EventName}>{event.naam}</h3>
-                  <p className={styles.EventInfo}>
-                    {event.nummerMaand}, {event.stad}
-                  </p>
+            {events.map((event) => (
+              <Link key={event.id} href={`/event/${event.id}`}> 
+                <div className={styles.Event} style={{ display: 'flex', alignItems: 'center' }}>
+                  <img src={event.flyer} alt={event.naam} className={styles.Flyer} />
+                  <div className={styles.EventDetails} style={{ marginLeft: '10px' }}>
+                    <h3 className={styles.EventName}>{event.naam}</h3>
+                    <p className={styles.EventInfo}>
+                      {event.nummerMaand}, {event.stad}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         ))}
