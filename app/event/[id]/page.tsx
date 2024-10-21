@@ -25,7 +25,7 @@ const EventPage = () => {
   return (
     <div className={styles.Container}>
 
-      {/* Flyer en naam */}
+      {/* Flyer en naa */}
       <div className={styles.FlyerSection}>
         <img src={event.flyer} alt={event.naam} className={styles.Flyer} />
         <h1 className={styles.EventName}>{event.naam}</h1>
