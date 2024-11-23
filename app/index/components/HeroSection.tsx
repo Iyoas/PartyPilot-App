@@ -11,7 +11,7 @@ const HeroSection = () => {
 
   return (
     <div className={styles.HeroSection}> 
-      <FlyerSection />
+      
     <div className={styles.HeroSection2}> 
       <SearchBar />
       <Filters />

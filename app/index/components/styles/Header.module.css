@@ -10,7 +10,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: auto;
+  width: 50%;
 }
 
 .hamburgerContainer {
@@ -21,7 +21,7 @@
 }
 
 .hamburger {
-  width: 8vw;
+  width: 9vw;
   height: auto;
 }
 

@@ -1,8 +1,8 @@
 import Layout from './layout';
-import HeroSection from '../components/HeroSection';
-import Events from '../components/Events';
-import TopEventSection from '../components/TopEventSection';
-import styles from '../components/styles/Page.module.css'; // Voeg een CSS-module toe
+import HeroSection from './index/components/HeroSection';
+import Events from './index/components/Events';
+import TopEventSection from './index/components/TopEventSection';
+import styles from './index/components/styles/Page.module.css'; // Voeg een CSS-module toe
 
 export default function HomePage() {
   return (
