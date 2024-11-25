@@ -1,22 +1,23 @@
 'use client';
 
 import React, { useState } from 'react';
-
-import FlyerSection from '../components/FlyerSection';
-import SearchBar from '../components/SearchBar';
-import Filters from '../components/Filters';
+import Link from 'next/link';
+import { BiParty } from "react-icons/bi";
 import styles from './styles/HeroSection.module.css';
 
 const HeroSection = () => {
 
   return (
-    <div className={styles.HeroSection}> 
-      
-    <div className={styles.HeroSection2}> 
-      <SearchBar />
-      <Filters />
-      </div>
+<div className={styles.HeroSection}>
+  <div className={styles.HeroSection2}>
+    <h1 className={styles.HeroTitle}>De party agenda van Nederland</h1>
+    <h6 className={styles.HeroSubtitle}>Vind de leukste events dichtbij jouw met onze zoekfilters!</h6>
     </div>
+    <Link href="https://www.youtube.com">
+      <button className={styles.EventButton}>Party Agenda <BiParty/> </button>
+    </Link>
+
+</div>
   );
 };
 

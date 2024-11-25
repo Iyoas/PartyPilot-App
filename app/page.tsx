@@ -2,7 +2,8 @@ import Layout from './layout';
 import HeroSection from './index/components/HeroSection';
 import Events from './index/components/Events';
 import TopEventSection from './index/components/TopEventSection';
-import styles from './index/components/styles/Page.module.css'; // Voeg een CSS-module toe
+import styles from './index/components/styles/Page.module.css'; 
+import BlogSection from './index/components/BlogSection';
 
 export default function HomePage() {
   return (
@@ -11,6 +12,7 @@ export default function HomePage() {
         <HeroSection />
         <TopEventSection />
         <Events />
+        <BlogSection />
       </div>
     </Layout>
   );

@@ -4,13 +4,15 @@
   align-items: center;
   position: relative;
   z-index: 1000;
+  background:#F4EBFF;
 }
 
 .logo {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 50%;
+  width: 45%;
+  margin-top: 5%;
 }
 
 .hamburgerContainer {
@@ -18,6 +20,7 @@
   justify-content: center;
   align-items: center;
   margin-right: 10%;
+  margin-top: 5%;
 }
 
 .hamburger {
@@ -27,3 +30,7 @@
 
 
 
+.headerHome {
+  background-color: #8e44ad; 
+
+}

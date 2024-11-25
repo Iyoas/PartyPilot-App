@@ -9,31 +9,22 @@
     padding: 0.7rem;
 }
 
-.DayHeader {
-  font-size: 1em;
-  background-color: #E2E9FF;
-  min-width: 30%; 
-  width: fit-content; 
-  border-radius: 10px;
-  padding: 0.6em;
-  font-weight: 500;
-  white-space: nowrap; 
-}
-
 .Event {
     display: flex;
     flex-direction: row;
-    margin-bottom: 10px;
-    border-top: 0.9px solid #ccc; 
-    margin-top: 5%;
+    margin-bottom: 5px;
+    padding: 0.7em;
+    margin-top: -5%;
     gap: 1em;
   }
-  
+  .EventsList > .Event:first-of-type {
+    border-top: none;
+  }
 .Flyer {
-    width:85px;
-    height: 75px;
+    width:86px;
+    height: 77px;
     margin-top: 5%;
-    border-radius: 12px;
+    border-radius: 7px;
   }
   .EventItem {
     padding: 0.7em;
@@ -46,10 +37,46 @@
 }
 
 .EventInfo{
-  font-size:small;
-  color: rgba(0, 0, 0, 0.6);
+  font-size:medium;
+  color: #666666af;
+  font-style: italic;
+  font-weight: 500;
 }
 
 .EventDetails{
   margin-top: 5%;
 }
+
+.EventDivider {
+
+  border: 0.1px solid #cccccc46; 
+  width: 100%; 
+  margin: 0; 
+}
+
+.EventButton {
+  display: flex; 
+  justify-content: center; 
+align-items: center; 
+flex-direction: row; 
+  background-color: var(--brand-color); 
+  color: var(--main-color);
+  font-weight: 600;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  height: 46px;  
+  min-width: 200px;  
+  margin-top: 5%;
+ margin-left: 25%;
+}
+
+.EventButton svg {
+  margin-left: 8px; 
+}
+
+.EventList{
+  display: flex;
+  flex-direction: column;
+}
+

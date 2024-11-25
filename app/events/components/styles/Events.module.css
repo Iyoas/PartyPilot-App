@@ -1,0 +1,55 @@
+.Events{
+    padding: 0.7em;
+    font-size: 1.6em;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+}
+
+.EventsList{
+    padding: 0.7rem;
+}
+
+.DayHeader {
+  font-size: 1em;
+  background-color: #E2E9FF;
+  min-width: 30%; 
+  width: fit-content; 
+  border-radius: 10px;
+  padding: 0.6em;
+  font-weight: 500;
+  white-space: nowrap; 
+}
+
+.Event {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    border-top: 0.9px solid #ccc; 
+    margin-top: 5%;
+    gap: 1em;
+  }
+  
+.Flyer {
+    width:85px;
+    height: 75px;
+    margin-top: 5%;
+    border-radius: 12px;
+  }
+  .EventItem {
+    padding: 0.7em;
+    border-radius: 8px;
+  }  
+
+.EventName{
+  font-size: medium;
+  font-weight: 600;
+}
+
+.EventInfo{
+  font-size:small;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.EventDetails{
+  margin-top: 5%;
+}
