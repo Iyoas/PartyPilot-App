@@ -10,7 +10,7 @@ import { MdArrowOutward } from "react-icons/md";
 const BlogSection: React.FC = () => {
   return (
     <div className={styles.blogSection}>
-      <h2>Top 10 Feestjes</h2>
+      <h2>Blog</h2>
       <div className={styles.blogCardsContainer}>
         {mockData.map((blog) => (
           <div key={blog.id} className={styles.blogCard}>

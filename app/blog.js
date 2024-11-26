@@ -7,7 +7,7 @@ const mockData = [
     },
     {
       id: 2,
-      titel: "Winter Wonderland Fest",
+      titel: "Urban Beats Festival",
       foto: "https://www.belvilla.nl/inspiratie/wp-content/uploads/2018/04/mensen-op-een-muziek-festival-1140x483.jpg",
       intro: "Vier diversiteit met een mix van wereldmuziek, traditionele gerechten en kunstmarkten...",
     },
@@ -19,13 +19,13 @@ const mockData = [
     },
     {
       id: 4,
-      titel: "Green Fields Gathering",
+      titel: "Urban Beats Festival",
       foto: "https://venga-store.com/cdn/shop/articles/16993016417296.jpg?v=1725916055&width=1100",
       intro: "Vier diversiteit met een mix van wereldmuziek, traditionele gerechten en kunstmarkten...",
     },
     {
       id: 5,
-      titel: "Cultural Fusion Fiesta",
+      titel: "Urban Beats Festival",
       foto: "https://www.belvilla.nl/inspiratie/wp-content/uploads/2018/04/mensen-op-een-muziek-festival-1140x483.jpg",
       intro: "Vier diversiteit met een mix van wereldmuziek, traditionele gerechten en kunstmarkten...",
     },

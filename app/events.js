@@ -14,6 +14,7 @@ const events = [
     lineup: 'DJ Mike, DJ Lisa', // Nieuw veld
     flyer: '/images/7fest2022.jpg',
     link: 'http://localhost:3000/events/1', // Aangepaste link
+    ticket:'http://localhost:3000/events/1'
   },
   {
     id: 2,
@@ -46,6 +47,7 @@ const events = [
     lineup: 'The Jazz Collective', // Nieuw veld
     flyer: '/images/7fest2022.jpg',
     link: 'http://localhost:3000/events/3', // Aangepaste link
+    ticket:'http://localhost:3000/events/1'
   },
   {
     id: 4,
@@ -110,6 +112,7 @@ const events = [
     lineup: 'Various Artists', // Nieuw veld
     flyer: '/images/7fest2022.jpg',
     link: 'http://localhost:3000/events/7', // Aangepaste link
+    ticket:'http://localhost:3000/events/1'
   },
   {
     id: 8,

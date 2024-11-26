@@ -4,6 +4,7 @@ import Events from './index/components/Events';
 import TopEventSection from './index/components/TopEventSection';
 import styles from './index/components/styles/Page.module.css'; 
 import BlogSection from './index/components/BlogSection';
+import SocialCard from './index/components/SocialCard';
 
 export default function HomePage() {
   return (
@@ -13,6 +14,7 @@ export default function HomePage() {
         <TopEventSection />
         <Events />
         <BlogSection />
+        <SocialCard />
       </div>
     </Layout>
   );

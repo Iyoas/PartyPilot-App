@@ -7,16 +7,18 @@
 
 .EventsList{
     padding: 0.7rem;
+    gap: 2em !important;
 }
 
 .DayHeader {
   font-size: 1em;
-  background-color: #E2E9FF;
+  background-color: var(--main-color);
+  color: var(--brand-color);
   min-width: 30%; 
   width: fit-content; 
   border-radius: 10px;
   padding: 0.6em;
-  font-weight: 500;
+  font-weight: 600;
   white-space: nowrap; 
 }
 
@@ -24,16 +26,15 @@
     display: flex;
     flex-direction: row;
     margin-bottom: 10px;
-    border-top: 0.9px solid #ccc; 
     margin-top: 5%;
     gap: 1em;
   }
   
 .Flyer {
-    width:85px;
-    height: 75px;
+    width:80px;
+    height: 70px;
     margin-top: 5%;
-    border-radius: 12px;
+    border-radius: 10px;
   }
   .EventItem {
     padding: 0.7em;
@@ -52,4 +53,38 @@
 
 .EventDetails{
   margin-top: 5%;
+}
+
+.EventGroup{
+  margin-bottom: 3em;
+}
+
+.TicketButton {
+  background-color: var(--main-color);
+  color: var(--brand-color);
+  font-weight: 600;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 2px 8px;
+  gap: 8px;
+  cursor: pointer;
+  font-size: small;
+  margin-top: 50%;
+
+}
+
+.TicketButton:hover {
+  background-color: var(--brand-color-dark);
+}
+
+.TicketIcon {
+  font-size: small;
+}
+
+.EventDivider {
+
+  border: 0.1px solid #cccccc46; 
+  width: 100%; 
+  margin: 0; 
 }

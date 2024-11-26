@@ -1,0 +1,90 @@
+.HeroSection{
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    padding: 0.7em;
+    position: relative;
+    flex-direction: column;
+    background-color: var(--main-color);
+    min-height: 40vh;
+}
+.HeroSection2{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    text-align: start !important;
+    margin-bottom: 2em;
+}
+
+.HeroTitle{
+    color:var(--brand-color);
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    text-align: start;
+}
+
+.HeroSubtitle{
+    color:var(--brand-color);
+    font-size: 1rem;
+    font-weight:500;
+    text-align: start;
+}
+
+.EventCount{
+    margin-top: 5%;
+    font-size: small;
+}
+
+.FilterContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+
+}
+
+.searchContainer {
+    display: flex;
+    align-items: center;
+    background-color: var(--background);
+    border-radius: 5px;
+    width: 75%;
+    height: 7vh; 
+  }
+  
+  .searchIcon {
+    font-size: 1.8em;
+    color: var(--letter);
+    margin-right: 10px;
+    margin-left: 5%;
+  }
+  .searchInput {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    width: 100%;
+    color: var(--letter);
+    font-weight: 600; 
+  }
+  
+  .searchInput::placeholder {
+    color: var(--letter);  
+    font-weight: normal;   
+  }
+
+.FilterBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+    height: 7vh; 
+    border-radius: 5px;
+    background-color: var(--background);
+}
+
+.FilterIcon {
+    font-size: 2em;
+    color: var(--letter);
+  }

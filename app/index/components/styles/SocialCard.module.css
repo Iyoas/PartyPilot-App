@@ -1,0 +1,68 @@
+.socialCard {
+    background-color: #f8f4ff; 
+    padding: 1rem;
+    border-radius: 10px;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 10%;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    color: var(--brand-color);
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .iconContainer {
+    color: var(--brand-color);
+    border: 1px solid  var(--brand-color);
+    padding: 0.4rem;
+    margin-top: -6%;
+    border-radius:10px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .iconContainer svg{
+    width: 20px;
+    height: 20px;
+  }
+  
+  .description {
+    font-size: 1rem;
+    color: var(--letter);
+    margin: 1rem 0 2rem;
+  }
+  
+  .socialIcons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  
+  .iconLink {
+    background-color: var(--brand-color);;
+    padding: 0.75rem;
+    border-radius: 50%;
+    color: var(--main-color) ; 
+    font-size: 1.5rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+  }
+  
+  .iconLink:hover {
+    background-color: #d6bcfa; 
+    transform: scale(1.1);
+  }
+  

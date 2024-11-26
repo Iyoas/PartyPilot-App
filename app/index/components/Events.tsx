@@ -5,6 +5,7 @@ import styles from './styles/Events.module.css';
 import events from "@/app/events"; 
 import Link from 'next/link'; 
 import { BsJournalBookmark } from "react-icons/bs";
+import { IoTicket } from "react-icons/io5";
 
 interface Event {
   id: string;
@@ -14,6 +15,7 @@ interface Event {
   naam: string;
   stad: string;
   flyer: string;
+  ticket?: string; // Optioneel veld voor ticketlink
 }
 
 const Events: React.FC = () => {
@@ -35,22 +37,30 @@ const Events: React.FC = () => {
             <Link href={`/event/${event.id}`}>
               <div className={styles.Event} style={{ display: 'flex', alignItems: 'center' }}>
                 <img src={event.flyer} alt={event.naam} className={styles.Flyer} />
-                <div className={styles.EventDetails} style={{ marginLeft: '10px' }}>
+                <div className={styles.EventDetails} style={{ marginLeft: '10px', flex: 1 }}>
                   <h3 className={styles.EventName}>{event.naam}</h3>
                   <p className={styles.EventInfo}>
                     {event.nummerMaand}, {event.stad}
                   </p>
                 </div>
+                {event.ticket && (
+                  <Link href={event.ticket} passHref>
+                    <button className={styles.TicketButton}>
+                      Ticket <IoTicket className={styles.TicketIcon} />
+                    </button>
+                  </Link>
+                )}
               </div>
             </Link>
           </React.Fragment>
         ))}
       </div>
       <Link href="https://www.youtube.com">
-      <button className={styles.EventButton}>Volledige agenda <BsJournalBookmark/> </button>
-    </Link>
+        <button className={styles.EventButton}>
+          Volledige agenda <BsJournalBookmark />
+        </button>
+      </Link>
     </div>
-
   );
 };
 

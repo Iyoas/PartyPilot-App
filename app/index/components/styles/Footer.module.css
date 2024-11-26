@@ -1,0 +1,91 @@
+/* Footer.module.css */
+.footer {
+    display: flex;
+    flex-direction: column;
+    border-top: 0.8px solid #cccccc46;  ;
+    padding:0.7em;
+    font-family: Arial, sans-serif;
+    gap: 5px;
+    margin-top: 15%;
+  }
+  
+  .logoSection {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: start;
+  }
+  
+  .logo {
+    display: flex;
+    width: 45%;
+    margin-top: 5%;
+
+  }
+  
+  .linkSections {
+    display: flex;
+    justify-content: space-between;
+    gap: 0px;
+    width: 90%;
+    margin-left: 5%;
+  }
+  
+  .linkColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .columnTitle {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--letter);
+  }
+ 
+  .linkColumn ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .linkColumn li {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .linkColumn li:hover {
+    color: var(--letter);
+    cursor: pointer;
+  }
+  
+  .linkColumn li svg {
+    font-size: 1.25rem;
+    color: #666;
+  }
+  
+  .linkColumn li svg:hover {
+    color: var(--letter);
+  }
+  
+
+.socialIcons {
+    display: flex; 
+    flex-direction: column;
+    gap: 25px; 
+  }
+  
+  .socialIcons li {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    
+  }
+  
+  .List{
+    gap: 10px;
+    display: flex; 
+    flex-direction: column;
+  }
