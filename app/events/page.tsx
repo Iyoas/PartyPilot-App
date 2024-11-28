@@ -1,5 +1,5 @@
 import Layout from '../layout'; 
-import HeroSection from './components/HeroSection'; 
+import FilterSection from './components/FilterSection';
 import Events from './components/Events'; 
 import TopEventSection from '../index/components/TopEventSection';
 import styles from '../index/components/styles/Page.module.css'; 
@@ -10,7 +10,7 @@ export default function EventsPage() {
   return (
     <Layout>
       <div className={styles.Container}>
-        <HeroSection />
+        <FilterSection />
         <TopEventSection />
         <Events />  
         <BlogSection />

@@ -55,7 +55,7 @@ const Events: React.FC = () => {
           </React.Fragment>
         ))}
       </div>
-      <Link href="https://www.youtube.com">
+      <Link href="/events">
         <button className={styles.EventButton}>
           Volledige agenda <BsJournalBookmark />
         </button>

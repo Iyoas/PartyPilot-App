@@ -1,0 +1,9 @@
+.HeroWithFilter {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .FilterOptions {
+    margin-top: 0;
+  }
+  

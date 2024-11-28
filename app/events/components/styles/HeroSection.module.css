@@ -74,17 +74,29 @@
     font-weight: normal;   
   }
 
-.FilterBox{
+  .FilterBox {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 15%;
-    height: 7vh; 
+    height: 7vh;
     border-radius: 5px;
     background-color: var(--background);
-}
-
-.FilterIcon {
+    transition: transform 0.3s ease, background-color 0.3s ease; 
+  }
+  
+  .FilterBox:hover {
+    transform: scale(1.1);
+    background-color: #e7e6e6;
+  }
+  
+  .FilterBox.clicked {
+    background-color: var(--background); 
+    transform: scale(1); 
+  }
+  
+  .FilterIcon {
     font-size: 2em;
     color: var(--letter);
   }
+  

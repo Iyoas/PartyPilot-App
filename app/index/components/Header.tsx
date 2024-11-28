@@ -16,7 +16,7 @@ const Header = () => {
   };
 
   return (
-    <div className={isOpen ? styles.menuOpen : ''}> {/* Apply a class when the menu is open */}
+    <div className={isOpen ? styles.menuOpen : ''}> 
       {!isOpen && (
         <div className={styles.header}>
           <div className={styles.logo}>

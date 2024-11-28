@@ -1,14 +1,30 @@
 'use client';
 
-import React from 'react';
-import Link from 'next/link';
+import React, { useState } from 'react';
 import { FaSearch } from "react-icons/fa";
 import { IoFilter } from "react-icons/io5";
 import styles from './styles/HeroSection.module.css';
 import events from '@/app/events'; 
-const HeroSection = () => {
-  // Aantal evenementen berekenen
+import FilterMenu from './FilterMenu'; 
+
+interface HeroSectionProps {
+  onSearch: (searchTerm: string) => void;
+}
+
+const HeroSection: React.FC<HeroSectionProps> = ({ onSearch }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [isOpen, setIsOpen] = useState(false); // State voor het filtermenu
   const eventCount = events.length;
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchTerm.trim()) {
+      onSearch(searchTerm.trim());
+      setSearchTerm('');
+    }
+  };
+
+  const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
     <div className={styles.HeroSection}>
@@ -17,18 +33,23 @@ const HeroSection = () => {
         <h1 className={styles.HeroTitle}>De party agenda van Nederland</h1>
         <h6 className={styles.HeroSubtitle}>Vind de leukste events dichtbij jouw met onze zoekfilters!</h6>
       </div>
-      <div className={styles.FilterContainer}>
+      <form className={styles.FilterContainer} onSubmit={handleSearchSubmit}>
         <div className={styles.searchContainer}>
-        <FaSearch className={styles.searchIcon} />
-        <input 
-            type="text" 
-            placeholder="Zoek op stad, event, artiest..." 
-            className={styles.searchInput} 
-        />
+          <FaSearch className={styles.searchIcon} />
+          <input
+            type="text"
+            placeholder="Zoek op stad, event, artiest..."
+            className={styles.searchInput}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
         </div>
-        <div className={styles.FilterBox}><IoFilter className={styles.FilterIcon} /></div>
+        <div className={styles.FilterBox} onClick={toggleMenu}>
+          <IoFilter className={styles.FilterIcon} />
         </div>
+      </form>
 
+      <FilterMenu isOpen={isOpen} closeMenu={toggleMenu} />
     </div>
   );
 };
