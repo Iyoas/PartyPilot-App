@@ -119,13 +119,38 @@
     background: #3a4a8b;
   }
   
-  .starsIcon {
+.starsIcon {
     font-size: 1.2em;
   }
   
-  .TagArrow {
+.TagArrow {
     display: flex;
     flex-direction: row;
     gap: 0.3em;
+  }
+  
+  .optionsWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+  }
+  
+.option {
+  margin-left: 1%;
+    padding: 0.1em 1em;
+    font-weight: bold;
+    border: 0.7px solid var(--brand-color);
+    border-radius: 15px;
+    font-size: 15px;
+    color: var(--brand-color);
+    background: var(--background);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+.option:hover {
+    background-color: var(--brand-color);
+    color: var(--background);
+    font-weight: bold;
   }
   

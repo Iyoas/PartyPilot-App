@@ -139,11 +139,11 @@ const FilterMenu: React.FC<FilterMenuProps> = ({ isOpen, closeMenu }) => {
           <div className={styles.filterContainer}>
             <div
               className={`${styles.filterOption} ${activeFilter === 'Leeftijd' ? styles.active : ''}`}
+              onClick={() => toggleFilter('Leeftijd')}
               style={{
                 borderBottomLeftRadius: activeFilter === 'Leeftijd' ? '0' : '',
                 borderBottomRightRadius: activeFilter === 'Leeftijd' ? '0' : '',
               }}
-              onClick={() => toggleFilter('Leeftijd')}
             >
               <div className={styles.TagArrow}>
                 <span>Leeftijd</span>
@@ -157,10 +157,19 @@ const FilterMenu: React.FC<FilterMenuProps> = ({ isOpen, closeMenu }) => {
             </div>
             {activeFilter === 'Leeftijd' && (
               <div className={`${styles.filterContent} ${styles.active}`}>
-                Inhoud voor Leeftijd
+                <div className={styles.optionsWrapper}>
+                  <span className={styles.option}>16+</span>
+                  <span className={styles.option}>18+</span>
+                  <span className={styles.option}>21+</span>
+                  <span className={styles.option}>23+</span>
+                  <span className={styles.option}>30+</span>
+                  <span className={styles.option}>40+</span>
+                </div>
               </div>
             )}
           </div>
+
+          
         </div>
         <button className={styles.applyButton}>
           <BsStars className={styles.starsIcon} />
