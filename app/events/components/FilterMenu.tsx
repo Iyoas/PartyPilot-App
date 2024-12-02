@@ -11,13 +11,30 @@ import styles from './styles/FilterMenu.module.css';
 interface FilterMenuProps {
   isOpen: boolean;
   closeMenu: () => void;
+  onApplyFilters: (filters: string[]) => void;
 }
 
-const FilterMenu: React.FC<FilterMenuProps> = ({ isOpen, closeMenu }) => {
+const FilterMenu: React.FC<FilterMenuProps> = ({ isOpen, closeMenu, onApplyFilters }) => {
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
+  const [selectedAgeRanges, setSelectedAgeRanges] = useState<string[]>([]);
 
   const toggleFilter = (filter: string) => {
     setActiveFilter(activeFilter === filter ? null : filter);
+  };
+
+  const toggleAgeRange = (ageRange: string) => {
+    setSelectedAgeRanges((prev) => {
+      if (prev.includes(ageRange)) {
+        return prev.filter((range) => range !== ageRange);
+      } else {
+        return [...prev, ageRange];
+      }
+    });
+  };
+
+  const handleApplyFilters = () => {
+    onApplyFilters(selectedAgeRanges);
+    closeMenu();
   };
 
   if (!isOpen) return null;
@@ -135,6 +152,7 @@ const FilterMenu: React.FC<FilterMenuProps> = ({ isOpen, closeMenu }) => {
               </div>
             )}
           </div>
+          
 
           <div className={styles.filterContainer}>
             <div
@@ -158,23 +176,26 @@ const FilterMenu: React.FC<FilterMenuProps> = ({ isOpen, closeMenu }) => {
             {activeFilter === 'Leeftijd' && (
               <div className={`${styles.filterContent} ${styles.active}`}>
                 <div className={styles.optionsWrapper}>
-                  <span className={styles.option}>16+</span>
-                  <span className={styles.option}>18+</span>
-                  <span className={styles.option}>21+</span>
-                  <span className={styles.option}>23+</span>
-                  <span className={styles.option}>30+</span>
-                  <span className={styles.option}>40+</span>
+                  {['16+', '18+', '21+', '23+', '30+', '40+'].map((ageRange) => (
+                    <span
+                      key={ageRange}
+                      className={`${styles.option} ${selectedAgeRanges.includes(ageRange) ? styles.selected : ''}`}
+                      onClick={() => toggleAgeRange(ageRange)}
+                    >
+                      {ageRange}
+                    </span>
+                  ))}
                 </div>
               </div>
             )}
           </div>
-
-          
         </div>
+
         <button className={styles.applyButton}>
           <BsStars className={styles.starsIcon} />
           Toepassen
         </button>
+        
       </div>
     </div>
   );
