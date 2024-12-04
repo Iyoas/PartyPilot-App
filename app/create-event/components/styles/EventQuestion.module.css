@@ -1,0 +1,61 @@
+/* EventQuestion.module.css */
+
+.formContainer {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .formGroup {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .formLabel {
+    font-weight: 600;
+    width: 150px;
+    text-align: right;
+  }
+  
+  .formControl {
+    padding: 10px;
+    width: 100%;
+    max-width: 400px;
+    background: var(--background);
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Specifieke stijlen voor datum en tijd inputvelden */
+  .dateInput,
+  .timeInput {
+    height:35px;
+    width: 350px !important;
+  }
+  
+  /* Submit Button */
+  .submitButton {
+    margin-top: 10%;
+    background-color: var(--brand-color);
+    color: var(--background);
+    padding: 10px 20px;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  .submitButton:hover {
+    background-color: var(--main-color);
+    color: var(--brand-color);
+  }
+  
+ 
+  

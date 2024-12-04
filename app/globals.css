@@ -40,6 +40,12 @@ body {
   }
 }
 
+.Container {
+  display: flex;
+  flex-direction: column; 
+  gap: 2em; 
+}
+
 h1{
   color:var(--brand-color);
   font-size: 1.8rem;
@@ -65,4 +71,10 @@ h6{
 h3{
   font-size: medium;
   font-weight: 600;
+}
+
+
+label {
+  font-weight: 600;
+  margin-bottom: 8px;
 }

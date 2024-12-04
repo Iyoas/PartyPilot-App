@@ -1,0 +1,52 @@
+.Container {
+    background-color: var(--light-background);
+    border-radius: 10px;
+    padding: 20px;
+    color: #333;
+    width: 90%;
+    margin-top: 10%;
+  }
+  
+  .Header {
+    display: flex;
+    align-items: start;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .Title {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--brand-color);
+    margin-top: 5px;
+  }
+  
+  .Description {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  .RulesList {
+    list-style: none;
+    padding: 0;
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  .RulesList li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 20px;
+  }
+  
+  .RulesList li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--brand-color);
+    font-size: 18px;
+  }
+  

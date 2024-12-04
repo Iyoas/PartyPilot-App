@@ -23,7 +23,7 @@ const Events: React.FC = () => {
 
   useEffect(() => {
     // Beperk de evenementenlijst tot de eerste 10
-    const limitedEvents = events.slice(0, 10); 
+    const limitedEvents = events.slice(0, 5); 
     setEventList(limitedEvents);
   }, []);
 

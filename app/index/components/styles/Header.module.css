@@ -4,7 +4,10 @@
   align-items: center;
   position: relative;
   z-index: 1000;
-  background:#F4EBFF;
+}
+
+.headerHome {
+  background-color: var(--main-color); /* Roze achtergrondkleur */
 }
 
 .logo {
@@ -26,11 +29,4 @@
 .hamburger {
   width: 9vw;
   height: auto;
-}
-
-
-
-.headerHome {
-  background-color: #8e44ad; 
-
 }
