@@ -21,8 +21,8 @@
 }
 
 .FilterTag:hover:not(.removing) {
-  background-color: var(--brand-color); 
-  color: var(--background); 
+  background-color: rgb(230, 209, 253); 
+
 }
 
 .FilterTag.removing {

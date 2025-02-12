@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 
 :root {
@@ -30,7 +30,8 @@
 body {
   color: var(--letter);
   background: var(--background);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif !important;
+
  
 }
 
@@ -51,19 +52,17 @@ h1{
   font-size: 1.8rem;
   font-weight: 600;
   text-align: center;
-  font-family: 'Poppins', sans-serif;
 }
 
 h2{
   padding: 0.7em;
   font-size: 1.6em;
   font-weight: bold;
-  font-family: 'Poppins', sans-serif;
 }
 h6{
   color:var(--brand-color);
   font-size: 1rem;
-  font-weight:500;
+  font-weight:200 !important;
   text-align: center;
 
 }

@@ -1,52 +1,38 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import styles from './styles/TopEventSection.module.css';
-
-const events = [
-  {
-    image: '/images/csc.jpg',
-    name: 'CSC Festival',
-    location: 'di 31 dec, Amsterdam',
-  },
-  {
-    image: '/images/7fest2022.jpg',
-    name: '7 Fest 2023',
-    location: 'ma 24 mei, Rotterdam',
-  },
-  {
-    image: '/images/csc.jpg',
-    name: 'CSC Festival',
-    location: 'di 31 dec, Amsterdam',
-  },
-  {
-    image: '/images/7fest2022.jpg',
-    name: '7 Fest 2023',
-    location: 'ma 24 mei, Rotterdam',
-  }
-];
+import eventsData from '@/app/events'; // Zorg dat dit de juiste import is
 
 const TopEventSection = () => {
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    // Alleen de eerste 10 evenementen inladen
+    const limitedEvents = eventsData.slice(0, 10);
+    setEvents(limitedEvents);
+  }, []);
+
   return (
     <div className={styles.TopEventSection}>
       <h2 className={styles.sectionTitle}>Top 10 Feestjes</h2>
       <div className={styles.eventContainer}>
-        {events.map((event, index) => (
-          <div key={index} className={styles.event}>
+        {events.map((event) => (
+          <div key={event.id} className={styles.event}>
             <Image
-              src={event.image}
-              alt={event.name}
+              src={event.flyer}
+              alt={event.naam}
               layout="intrinsic"
               className={styles.eventImage}
-              width={200}
-              height={400}
+              width={300}
+              height={150}
             />
             <div className={styles.eventDetails}>
-              <div>
-                <h2>{event.name}</h2>
-                <p>{event.location}</p>
-              </div>
+              <h2 className={styles.eventName}>{event.naam}</h2>
+              <p className={styles.eventLocation}>
+                {event.datum1}, {event.stad}
+              </p>
             </div>
           </div>
         ))}

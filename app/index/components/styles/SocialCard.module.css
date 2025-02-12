@@ -43,6 +43,7 @@
     font-size: 1rem;
     color: var(--letter);
     margin: 1rem 0 2rem;
+    font-weight: 100;
   }
   
   .socialIcons {

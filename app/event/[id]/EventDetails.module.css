@@ -23,9 +23,9 @@
   
 .Section {
     border-radius: 0px 0px 10px 10px; 
-    font-family: 'Poppins', sans-serif;
     color:#555555;
     font-size: medium;
+    font-weight: 350;
 }
 
 .FlyerSection {
@@ -68,7 +68,6 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    font-family: 'Poppins', sans-serif;
     gap:10px;
     color: #4E5BA6; 
     font-weight: bold; 

@@ -18,7 +18,7 @@
     flex-shrink: 0; 
     width: 250px; 
     height: 350px;
-    background-color: var(--light-background);
+    background: rgb(245, 245, 245);
     border-radius: 8px;
     overflow: hidden;
     transition: transform 0.3s ease;
@@ -28,6 +28,7 @@
   
   .blogCard:hover {
     transform: translateY(-5px);
+    background: rgb(235, 235, 235);
   }
   
   .blogImage {
@@ -46,8 +47,8 @@
   .blogIntro {
     padding: 0 15px 15px;
     font-size: medium;
-    color: #666;
-    font-weight: 500;
+    color: #181d276e;
+    font-weight: 100;
   }
   
   .BlogButton {
@@ -55,8 +56,8 @@
     justify-content: center; 
   align-items: center; 
   flex-direction: row; 
-    background-color: var(--brand-color); 
-    color: var(--main-color);
+  background-color: var(--brand-color); 
+  color: var(--background);
     font-weight: 600;
     border-radius: 10px;
     font-size: 1rem;
@@ -65,6 +66,18 @@
     min-width: 187px;  
     margin-top: 5%;
    margin-left: 25%;
+   transition: background-color 0.3s ease, transform 0.2s ease; 
+  }
+
+  .BlogButton:hover {
+    background-color: var(--background);
+    color:var(--brand-color);
+    transform: scale(1.05); 
+  }
+  
+  .BlogButton:active {
+    transform: scale(0.95);
+    background-color: #2d3a71; 
   }
   
   .BlogButton svg {

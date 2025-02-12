@@ -10,6 +10,7 @@
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
 }
+
 .HeroSection2{
     margin-top: 5%;
     display: flex;
@@ -18,19 +19,32 @@
 }
 
 .EventButton {
-    display: flex; 
-    justify-content: center; 
+  display: flex; 
+  justify-content: center; 
   align-items: center; 
   flex-direction: row; 
-    background-color: var(--brand-color); 
-    color: var(--background);
-    font-weight: 600;
-    border-radius: 10px;
-    font-size: 1rem;
-    cursor: pointer;
-    height: 46px;  
-    min-width: 187px;  
-  }
+  background-color: var(--brand-color); 
+  color: var(--background);
+  font-weight: 600;
+  border-radius: 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  height: 46px;  
+  min-width: 187px;  
+  transition: background-color 0.3s ease, transform 0.2s ease; 
+}
+
+.EventButton:hover {
+  background-color: var(--background);
+  color:var(--brand-color);
+  transform: scale(1.05); 
+}
+
+.EventButton:active {
+  transform: scale(0.95);
+  background-color: #2d3a71; 
+}
+
 
 .EventButton svg {
     margin-left: 8px; 

@@ -1,5 +1,4 @@
 'use client';
-
 import React from 'react';
 import { RxCross2 } from "react-icons/rx";
 import styles from './styles/FilterOptions.module.css';
