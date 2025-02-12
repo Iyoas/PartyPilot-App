@@ -72,7 +72,7 @@
   }
   
   .searchInput::placeholder {
-    color: var(--letter);  
+    color: v#666666af;  
     font-weight: 100;   
   }
 

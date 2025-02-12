@@ -2,8 +2,10 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from './styles/TopEventSection.module.css';
-import eventsData from '@/app/events'; // Zorg dat dit de juiste import is
+import eventsData from '@/app/events'; 
+import { IoTicket } from "react-icons/io5";
 
 const TopEventSection = () => {
   const [events, setEvents] = useState([]);
@@ -19,22 +21,31 @@ const TopEventSection = () => {
       <h2 className={styles.sectionTitle}>Top 10 Feestjes</h2>
       <div className={styles.eventContainer}>
         {events.map((event) => (
-          <div key={event.id} className={styles.event}>
-            <Image
-              src={event.flyer}
-              alt={event.naam}
-              layout="intrinsic"
-              className={styles.eventImage}
-              width={300}
-              height={150}
-            />
-            <div className={styles.eventDetails}>
-              <h2 className={styles.eventName}>{event.naam}</h2>
-              <p className={styles.eventLocation}>
-                {event.datum1}, {event.stad}
-              </p>
-            </div>
-          </div>
+          <Link key={event.id} href={`/event/${event.id}`} passHref legacyBehavior>
+            <a className={styles.eventLink}>
+              <div className={styles.event}>
+                <Image
+                  src={event.flyer}
+                  alt={event.naam}
+                  layout="intrinsic"
+                  className={styles.eventImage}
+                  width={300}
+                  height={150}
+                />
+                <div className={styles.eventDetails}>
+                  <h2 className={styles.eventName}>{event.naam}</h2>
+                  <p className={styles.eventLocation}>
+                    {event.datum1}, {event.stad}
+                  </p>
+                  {event.ticket && (
+                 <button className={styles.TicketButton}>
+                  Ticket <IoTicket className={styles.TicketIcon} />
+                </button>
+                  )}
+                </div>
+              </div>
+            </a>
+          </Link>
         ))}
       </div>
     </div>

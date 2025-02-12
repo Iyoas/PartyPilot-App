@@ -143,10 +143,10 @@
 }
 
 .option.selected {
-  background-color: var(--brand-color);
-  color: var(--background);
+  background-color: var(--main-color);
+  color: var(--brand-color);
   font-weight: bold;
-  border-color: var(--background);
+  border-color: var(--brand-color);
 }
 
 .datePicker {

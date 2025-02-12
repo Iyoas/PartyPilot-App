@@ -1,42 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;600&display=swap');
 
-
-
 .sectionTitle {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 26px; 
   padding: 0.7em;
- 
 }
 
 .eventContainer {
   display: flex;
   overflow-x: auto;
-  height: 36vh;
+  height: 42vh;
   width: 100%;
   padding: 0.7em;
   margin-top: -5%;
+}
+
+/* Zorg ervoor dat de link geen extra ruimte of veranderingen aanbrengt */
+.eventLink {
+  display: flex;          /* Maak de link zelf een flex container */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 0 0 auto;
+  margin-right: 15px;
+  width: 85%;
+  padding: 10px;
+  background: rgb(245, 245, 245);
+  border-radius: 10px;
+  margin-bottom: 5%;
+  transition: transform 0.3s ease;
+  min-height: 200px;     
 }
 
 .event {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 10px;
   flex: 0 0 auto;
   margin-right: 15px;
-  width: 85%;
-  background: rgb(245, 245, 245);
-  border-radius: 10px;
-  margin-bottom: 5%;
-  transition: transform 0.3s ease;
-  min-height: 200px;
+  width: 100%;
+  min-height:200px;
 }
 
-
-.event:hover {
+.eventLink:hover {
   transform: translateY(-5px);
   background: rgb(235, 235, 235);
 }
@@ -53,7 +61,7 @@
   flex-direction: column;
   align-items: start;
   width: 100%;
-  height:8vh;
+  height: 8vh;
 }
 
 .eventDetails h2 {
@@ -63,7 +71,7 @@
 }
 
 .eventDetails p {
-  font-size:0.9rem;
+  font-size: 0.9rem;
   margin-top: -10px;
   color: #181d276e;
   font-weight: 400;
@@ -75,3 +83,25 @@
   border-radius: 5px; 
 }
 
+.TicketButton {
+  background-color: var(--main-color);
+  color: var(--brand-color);
+  font-weight: 600;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 2px 8px;
+  gap: 8px;
+  cursor: pointer;
+  font-size: small;
+  margin-top: 5%;
+
+}
+
+.TicketButton:hover {
+  background-color: var(--brand-color-dark);
+}
+
+.TicketIcon {
+  font-size: small;
+}
