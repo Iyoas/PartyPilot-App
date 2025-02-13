@@ -1,26 +1,18 @@
 'use client';
 
 import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
 import { FaCalendar } from 'react-icons/fa6';
+import { Datepicker } from 'react-modern-calendar-datepicker';
+import 'react-modern-calendar-datepicker/lib/DatePicker.css'; // Zorg ervoor dat je de CSS laadt
 import styles from '../styles/FilterMenu.module.css';
 
 const DateFilter = ({ activeFilter, toggleFilter, selectedDates, setSelectedDates }) => {
-  const [localSelectedDates, setLocalSelectedDates] = useState<Date[]>(selectedDates || []);
+  const [localSelectedDates, setLocalSelectedDates] = useState(selectedDates || { from: null, to: null });
 
-  const handleDateChange = (date: Date) => {
-    // Voeg een datum toe als deze nog niet is geselecteerd
-    if (localSelectedDates.some((d) => d.getTime() === date.getTime())) {
-      // Verwijder de datum als deze al is geselecteerd
-      setLocalSelectedDates(localSelectedDates.filter((d) => d.getTime() !== date.getTime()));
-    } else {
-      setLocalSelectedDates([...localSelectedDates, date]);
-    }
-
-    // Synchroniseer met de globale state
-    setSelectedDates(localSelectedDates);
+  const handleDateChange = (date) => {
+    setLocalSelectedDates(date);
+    setSelectedDates(date);
   };
 
   const handleFilterToggle = () => {
@@ -33,32 +25,31 @@ const DateFilter = ({ activeFilter, toggleFilter, selectedDates, setSelectedDate
         className={`${styles.filterOption} ${activeFilter === 'Datum' ? styles.active : ''}`}
         onClick={handleFilterToggle}
       >
-      <div className={styles.FilterInfo}>
-        <div className={styles.TagArrow}>
-        <FaCalendar className={styles.filterIcon} />
-          <span>Datum</span>
+        <div className={styles.FilterInfo}>
+          <div className={styles.TagArrow}>
+            <FaCalendar className={styles.filterIcon} />
+            <span>Datum</span>
           </div>
-          <span className={styles.dateFilterText} >Filter events op jouw beschikbare datum</span>
+          <span className={styles.dateFilterText}>
+            Filter events op jouw beschikbare datum
+          </span>
         </div>
         {activeFilter === 'Datum' ? (
-            <IoIosArrowUp className={styles.arrowIcon} />
-          ) : (
-            <IoIosArrowDown className={styles.arrowIcon} />
-          )}
+          <IoIosArrowUp className={styles.arrowIcon} />
+        ) : (
+          <IoIosArrowDown className={styles.arrowIcon} />
+        )}
       </div>
       {activeFilter === 'Datum' && (
         <div className={`${styles.filterContent} ${styles.active}`}>
-          <DatePicker
-            inline
-            selected={localSelectedDates[0] || null} // Toon de eerste geselecteerde datum (of geen)
-            onChange={handleDateChange} // Bijwerken van geselecteerde datums
-            highlightDates={localSelectedDates} // Gemarkeerde datums
+          <Datepicker
+            selected={localSelectedDates}
+            onChange={handleDateChange}
+            controls={['calendar']} // Alleen de calendar-weergave tonen
+            min="1920-01-01"
+            max="2050-01-01"
+            range
             calendarClassName={styles.datePicker}
-            dayClassName={(date) =>
-              localSelectedDates.some((d) => d.getTime() === date.getTime())
-                ? styles.selectedDate
-                : ''
-            }
           />
         </div>
       )}
