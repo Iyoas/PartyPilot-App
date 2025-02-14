@@ -12,6 +12,7 @@ import styles from './styles/FilterMenu.module.css';
 
 const FilterMenu = ({ isOpen, closeMenu, onApplyFilters }) => {
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
+  const [selectedDateRanges, setSelectedDateRanges] = useState<string[]>([]);
   const [selectedAgeRanges, setSelectedAgeRanges] = useState<string[]>([]);
   const [selectedEventTypes, setSelectedEventTypes] = useState<string[]>([]);
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
@@ -35,11 +36,13 @@ const FilterMenu = ({ isOpen, closeMenu, onApplyFilters }) => {
 
   const handleApplyFilters = () => {
     const appliedFilters = [
+      ...selectedDateRanges,
       ...selectedAgeRanges,
       ...selectedEventTypes,
       ...selectedGenres,
       ...selectedLocations,
     ];
+
     onApplyFilters(appliedFilters);
     closeMenu();
   };
@@ -48,51 +51,55 @@ const FilterMenu = ({ isOpen, closeMenu, onApplyFilters }) => {
 
   return (
     <div className={styles.overlay}>
-    <div className={styles.menu}>
-      <div className={styles.menuContent}>
-        <div className={styles.header}>
-          <h2 className={styles.title}>Filter op:</h2>
-          <button className={styles.closeButton} onClick={closeMenu}>
-            <RxCross2 className={styles.closeIcon} />
+      <div className={styles.menu}>
+        <div className={styles.menuContent}>
+          <div className={styles.header}>
+            <h2 className={styles.title}>Filter op:</h2>
+            <button className={styles.closeButton} onClick={closeMenu}>
+              <RxCross2 className={styles.closeIcon} />
+            </button>
+          </div>
+          <div className={styles.filters}>
+            <DateFilter
+              activeFilter={activeFilter}
+              toggleFilter={toggleFilter}
+              selectedDateRanges={selectedDateRanges}
+              setSelectedDateRanges={setSelectedDateRanges}
+            />
+            <LocationFilter
+              activeFilter={activeFilter}
+              toggleFilter={toggleFilter}
+              selectedLocations={selectedLocations}
+              setSelectedLocations={setSelectedLocations}
+            />
+            <GenreFilter
+              activeFilter={activeFilter}
+              toggleFilter={toggleFilter}
+              selectedGenres={selectedGenres}
+              setSelectedGenres={setSelectedGenres}
+            />
+            <EventTypeFilter
+              activeFilter={activeFilter}
+              toggleFilter={toggleFilter}
+              selectedEventTypes={selectedEventTypes}
+              setSelectedEventTypes={setSelectedEventTypes}
+            />
+            <AgeFilter
+              activeFilter={activeFilter}
+              toggleFilter={toggleFilter}
+              selectedAgeRanges={selectedAgeRanges}
+              setSelectedAgeRanges={setSelectedAgeRanges}
+            />
+          </div>
+        </div>
+        <div className={styles.buttonContainer}>
+          <button className={styles.applyButton} onClick={handleApplyFilters}>
+            <BsStars className={styles.starsIcon} />
+            Toepassen
           </button>
         </div>
-        <div className={styles.filters}>
-          <DateFilter activeFilter={activeFilter} toggleFilter={toggleFilter} />
-          <LocationFilter
-            activeFilter={activeFilter}
-            toggleFilter={toggleFilter}
-            selectedLocations={selectedLocations}
-            setSelectedLocations={setSelectedLocations}
-          />
-          <GenreFilter
-            activeFilter={activeFilter}
-            toggleFilter={toggleFilter}
-            selectedGenres={selectedGenres}
-            setSelectedGenres={setSelectedGenres}
-          />
-          <EventTypeFilter
-            activeFilter={activeFilter}
-            toggleFilter={toggleFilter}
-            selectedEventTypes={selectedEventTypes}
-            setSelectedEventTypes={setSelectedEventTypes}
-          />
-          <AgeFilter
-            activeFilter={activeFilter}
-            toggleFilter={toggleFilter}
-            selectedAgeRanges={selectedAgeRanges}
-            setSelectedAgeRanges={setSelectedAgeRanges}
-          />
-        </div>
-      </div>
-      <div className={styles.buttonContainer}>
-        <button className={styles.applyButton} onClick={handleApplyFilters}>
-          <BsStars className={styles.starsIcon} />
-          Toepassen
-        </button>
       </div>
     </div>
-  </div>
-  
   );
 };
 
