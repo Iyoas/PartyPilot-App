@@ -7,24 +7,22 @@ import styles from '../styles/FilterMenu.module.css';
 
 const AgeFilter = ({ activeFilter, toggleFilter, selectedAgeRanges, setSelectedAgeRanges }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [localSelectedAgeRanges, setLocalSelectedAgeRanges] = useState(selectedAgeRanges); // Lokale state voor geselecteerde leeftijdsopties
+  const [localSelectedAgeRanges, setLocalSelectedAgeRanges] = useState(selectedAgeRanges);
 
   const toggleAgeRange = (ageRange) => {
     setLocalSelectedAgeRanges((prev) => {
       const updatedSelectedRanges = prev.includes(ageRange)
-        ? prev.filter((range) => range !== ageRange) // Verwijder als het al geselecteerd is
-        : [...prev, ageRange]; // Voeg toe als het niet geselecteerd is
+        ? prev.filter((range) => range !== ageRange)
+        : [...prev, ageRange];
 
-      // Synchroniseer de lokale geselecteerde opties met de globale state
       setSelectedAgeRanges(updatedSelectedRanges);
-
-      return updatedSelectedRanges; // Update de lokale state
+      return updatedSelectedRanges;
     });
   };
 
   const handleFilterToggle = () => {
-    setIsOpen(!isOpen); // Toggle het filter open/close
-    toggleFilter('Leeftijd'); // Update de externe filterstatus
+    setIsOpen(!isOpen);
+    toggleFilter('Leeftijd');
   };
 
   return (
@@ -33,20 +31,20 @@ const AgeFilter = ({ activeFilter, toggleFilter, selectedAgeRanges, setSelectedA
         className={`${styles.filterOption} ${activeFilter === 'Leeftijd' ? styles.active : ''}`}
         onClick={handleFilterToggle}
       >
-        
-      <div className={styles.FilterInfo}>
-        <div className={styles.TagArrow}>
-        <FaPassport className={styles.filterIcon} />
-          <span>Leeftijd</span>
-        </div>
-        <span className={styles.dateFilterText} >Filter events op leeftijd en feest met jouw leeftijdsgenoten</span>
-        </div>
-
-        {activeFilter === 'Leeftijd' ? (
+        <div className={styles.FilterRow}>
+          <div className={styles.TagArrow}>
+            <FaPassport className={styles.filterIcon} />
+            <span>Leeftijd</span>
+          </div>
+          {activeFilter === 'Leeftijd' ? (
             <IoIosArrowUp className={styles.arrowIcon} />
           ) : (
             <IoIosArrowDown className={styles.arrowIcon} />
           )}
+        </div>
+        <span className={styles.dateFilterText}>
+          Filter events op leeftijd en feest met jouw leeftijdsgenoten
+        </span>
       </div>
 
       {activeFilter === 'Leeftijd' && isOpen && (
@@ -57,8 +55,8 @@ const AgeFilter = ({ activeFilter, toggleFilter, selectedAgeRanges, setSelectedA
                 key={ageRange}
                 className={`${styles.option} ${localSelectedAgeRanges.includes(ageRange) ? styles.selected : ''}`}
                 onClick={(e) => {
-                  e.stopPropagation(); // Voorkom dat het filter zelf sluit
-                  toggleAgeRange(ageRange); // Pas de selectie aan
+                  e.stopPropagation();
+                  toggleAgeRange(ageRange);
                 }}
               >
                 {ageRange}
@@ -72,4 +70,3 @@ const AgeFilter = ({ activeFilter, toggleFilter, selectedAgeRanges, setSelectedA
 };
 
 export default AgeFilter;
-

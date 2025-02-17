@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import { FaSearch } from "react-icons/fa";
 import { IoFilter } from "react-icons/io5";
 import styles from './styles/HeroSection.module.css';
@@ -14,7 +16,21 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSearch, onApplyFilters }) =
   const [searchTerm, setSearchTerm] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+  const [isSticky, setIsSticky] = useState(false);
   const eventCount = events.length;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 250) { // Sticky wordt geactiveerd na 100px scrollen
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,10 +42,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSearch, onApplyFilters }) =
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  // Update the selected filters
   const handleApplyFilters = (appliedFilters: string[]) => {
     setSelectedFilters(appliedFilters);
-    onApplyFilters(appliedFilters); // Pass updated filters back to parent
+    onApplyFilters(appliedFilters);
   };
 
   return (
@@ -37,11 +52,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSearch, onApplyFilters }) =
       <p className={styles.EventCount}><strong>{eventCount}</strong> aankomende feesten</p> 
       <div className={styles.HeroSection2}>
         <h1 className={styles.HeroTitle}>De party agenda van Nederland</h1>
-        <h6 className={styles.HeroSubtitle}>Vind de leukste events dichtbij jouw met onze zoekfilters!</h6>
+        <h6 className={styles.HeroSubtitle}>Vind de leukste events dichtbij jou met onze zoekfilters!</h6>
       </div>
 
-      {/* Zoekbalk */}
-      <form className={styles.FilterContainer} onSubmit={handleSearchSubmit}>
+      {/* Zoekbalk en filterknop */}
+      <form className={`${styles.FilterContainer} ${isSticky ? styles.sticky : ''}`} onSubmit={handleSearchSubmit}>
         <div className={styles.searchContainer}>
           <FaSearch className={styles.searchIcon} />
           <input
@@ -68,7 +83,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSearch, onApplyFilters }) =
           isOpen={isOpen} 
           closeMenu={() => setIsOpen(false)} 
           onApplyFilters={handleApplyFilters} 
-          selectedFilters={selectedFilters} // Stuur de geselecteerde filters naar FilterMenu
+          selectedFilters={selectedFilters} 
         />
       )}
     </div>

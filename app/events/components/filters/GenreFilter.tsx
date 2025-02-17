@@ -9,29 +9,26 @@ const GenreFilter = ({ activeFilter, toggleFilter, selectedGenres, setSelectedGe
   const [isOpen, setIsOpen] = useState(false);
   const [localSelectedGenres, setLocalSelectedGenres] = useState<string[]>([]);
 
-  // Gebruik useEffect om de lokale state bij te werken op basis van de geselecteerde genres
   useEffect(() => {
     if (selectedGenres) {
-      setLocalSelectedGenres(selectedGenres); // Synchroniseer met de props
+      setLocalSelectedGenres(selectedGenres);
     }
-  }, [selectedGenres]);  // Afhankelijk van selectedGenres van bovenliggende component
+  }, [selectedGenres]);
 
   const toggleGenre = (genre: string) => {
     setLocalSelectedGenres((prev) => {
       const updatedSelectedGenres = prev.includes(genre)
-        ? prev.filter((g) => g !== genre) // Verwijder als het al geselecteerd is
-        : [...prev, genre]; // Voeg toe als het niet geselecteerd is
+        ? prev.filter((g) => g !== genre)
+        : [...prev, genre];
 
-      // Synchroniseer de lokale geselecteerde opties met de globale state
       setSelectedGenres(updatedSelectedGenres);
-
-      return updatedSelectedGenres; // Update de lokale state
+      return updatedSelectedGenres;
     });
   };
 
   const handleFilterToggle = () => {
-    setIsOpen(!isOpen); // Toggle het filter open/close
-    toggleFilter('Genre'); // Update de externe filterstatus
+    setIsOpen(!isOpen);
+    toggleFilter('Genre');
   };
 
   return (
@@ -40,36 +37,39 @@ const GenreFilter = ({ activeFilter, toggleFilter, selectedGenres, setSelectedGe
         className={`${styles.filterOption} ${activeFilter === 'Genre' ? styles.active : ''}`}
         onClick={handleFilterToggle}
       >
-       <div className={styles.FilterInfo}>
-        <div className={styles.TagArrow}>
-        <FaMusic className={styles.filterIcon} />
-          <span>Genre</span>
-        </div>
-        <span className={styles.dateFilterText} >Filter events op jouw favoriete genres van house en techno tot afro en amapiano</span>
-        </div>
-                 
-        {activeFilter === 'Genre' ? (
+        <div className={styles.FilterRow}>
+          <div className={styles.TagArrow}>
+            <FaMusic className={styles.filterIcon} />
+            <span>Genre</span>
+          </div>
+          {activeFilter === 'Genre' ? (
             <IoIosArrowUp className={styles.arrowIcon} />
           ) : (
             <IoIosArrowDown className={styles.arrowIcon} />
           )}
+        </div>
+        <span className={styles.dateFilterText}>
+          Filter events op jouw favoriete genres van house en techno tot afro en amapiano
+        </span>
       </div>
 
       {activeFilter === 'Genre' && isOpen && (
         <div className={`${styles.filterContent} ${styles.active}`}>
           <div className={styles.optionsWrapper}>
-            {['Afro', 'Amapiano', 'House', 'Techno', 'Pop', 'Rock', 'Hip-Hop', 'Jazz', 'R&B', 'Classical', 'Reggae', 'Electronic', 'Blues'].sort().map((genre) => (
-              <span
-                key={genre}
-                className={`${styles.option} ${localSelectedGenres.includes(genre) ? styles.selected : ''}`}
-                onClick={(e) => {
-                  e.stopPropagation(); // Voorkom dat het filter zelf sluit
-                  toggleGenre(genre); // Pas de selectie aan
-                }}
-              >
-                {genre}
-              </span>
-            ))}
+            {['Afro', 'Amapiano', 'House', 'Techno', 'Pop', 'Rock', 'Hip-Hop', 'Jazz', 'R&B', 'Classical', 'Reggae', 'Electronic', 'Blues']
+              .sort()
+              .map((genre) => (
+                <span
+                  key={genre}
+                  className={`${styles.option} ${localSelectedGenres.includes(genre) ? styles.selected : ''}`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleGenre(genre);
+                  }}
+                >
+                  {genre}
+                </span>
+              ))}
           </div>
         </div>
       )}

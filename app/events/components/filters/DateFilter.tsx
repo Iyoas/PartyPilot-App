@@ -3,18 +3,18 @@
 import React, { useState, useEffect } from 'react';
 import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
 import { FaCalendar } from 'react-icons/fa6';
-import DatePicker from 'react-datepicker'; // Importeer de DatePicker
-import "react-datepicker/dist/react-datepicker.css"; // Importeer de styling
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 import styles from '../styles/FilterMenu.module.css';
 
 const DateFilter = ({ activeFilter, toggleFilter, selectedDateRanges, setSelectedDateRanges }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [localSelectedDateRanges, setLocalSelectedDateRanges] = useState<string[]>([]);
-  const [showDatePicker, setShowDatePicker] = useState(false); // Staat de datepicker weergeven
+  const [showDatePicker, setShowDatePicker] = useState(false);
 
   useEffect(() => {
     if (selectedDateRanges) {
-      setLocalSelectedDateRanges(selectedDateRanges); // Synchroniseer met de props
+      setLocalSelectedDateRanges(selectedDateRanges);
     }
   }, [selectedDateRanges]);
 
@@ -24,7 +24,7 @@ const DateFilter = ({ activeFilter, toggleFilter, selectedDateRanges, setSelecte
         ? prev.filter((date) => date !== dateRange)
         : [...prev, dateRange];
 
-      setSelectedDateRanges(updatedSelectedDateRanges); // Synchroniseer met de bovenliggende component
+      setSelectedDateRanges(updatedSelectedDateRanges);
       return updatedSelectedDateRanges;
     });
   };
@@ -35,9 +35,10 @@ const DateFilter = ({ activeFilter, toggleFilter, selectedDateRanges, setSelecte
   };
 
   const handleSelectDate = (date: Date) => {
-    setLocalSelectedDateRanges([date.toLocaleDateString()]);
-    setSelectedDateRanges([date.toLocaleDateString()]);
-    setShowDatePicker(false); // Sluit de datepicker af na selectie
+    const formattedDate = date.toLocaleDateString('nl-NL');
+    setLocalSelectedDateRanges([formattedDate]);
+    setSelectedDateRanges([formattedDate]);
+    setShowDatePicker(false);
   };
 
   return (
@@ -46,19 +47,18 @@ const DateFilter = ({ activeFilter, toggleFilter, selectedDateRanges, setSelecte
         className={`${styles.filterOption} ${activeFilter === 'Datum' ? styles.active : ''}`}
         onClick={handleFilterToggle}
       >
-        <div className={styles.FilterInfo}>
+        <div className={styles.FilterRow}>
           <div className={styles.TagArrow}>
             <FaCalendar className={styles.filterIcon} />
             <span>Datum</span>
           </div>
-          <span className={styles.dateFilterText}>Filter evenementen op datum</span>
+          {activeFilter === 'Datum' ? (
+            <IoIosArrowUp className={styles.arrowIcon} />
+          ) : (
+            <IoIosArrowDown className={styles.arrowIcon} />
+          )}
         </div>
-
-        {activeFilter === 'Datum' ? (
-          <IoIosArrowUp className={styles.arrowIcon} />
-        ) : (
-          <IoIosArrowDown className={styles.arrowIcon} />
-        )}
+        <span className={styles.dateFilterText}>Filter evenementen op datum</span>
       </div>
 
       {activeFilter === 'Datum' && isOpen && (
@@ -89,14 +89,13 @@ const DateFilter = ({ activeFilter, toggleFilter, selectedDateRanges, setSelecte
               className={`${styles.option} ${localSelectedDateRanges.includes('Selecteer datum...') ? styles.selected : ''}`}
               onClick={(e) => {
                 e.stopPropagation();
-                setShowDatePicker(!showDatePicker); // Toggle de datepicker
+                setShowDatePicker(!showDatePicker);
               }}
             >
               Selecteer datum...
             </span>
           </div>
 
-          {/* Toon de DatePicker als de gebruiker "Selecteer datum..." kiest */}
           {showDatePicker && (
             <div className={styles.datePickerWrapper}>
               <DatePicker

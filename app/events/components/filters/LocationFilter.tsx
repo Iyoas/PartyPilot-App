@@ -11,7 +11,7 @@ const LocationFilter = ({ activeFilter, toggleFilter, selectedLocations, setSele
 
   useEffect(() => {
     if (selectedLocations) {
-      setLocalSelectedLocations(selectedLocations); // Synchroniseer met de props
+      setLocalSelectedLocations(selectedLocations);
     }
   }, [selectedLocations]);
 
@@ -21,7 +21,7 @@ const LocationFilter = ({ activeFilter, toggleFilter, selectedLocations, setSele
         ? prev.filter((loc) => loc !== location)
         : [...prev, location];
 
-      setSelectedLocations(updatedSelectedLocations); // Synchroniseer met de bovenliggende component
+      setSelectedLocations(updatedSelectedLocations);
       return updatedSelectedLocations;
     });
   };
@@ -37,19 +37,18 @@ const LocationFilter = ({ activeFilter, toggleFilter, selectedLocations, setSele
         className={`${styles.filterOption} ${activeFilter === 'Plaats' ? styles.active : ''}`}
         onClick={handleFilterToggle}
       >
-      <div className={styles.FilterInfo}>
-        <div className={styles.TagArrow}>
-        <FaLocationDot className={styles.filterIcon} />
-          <span>Plaats</span>
-        </div>
-        <span className={styles.dateFilterText} >Vind events bij jouw in de buurt</span>
-        </div>
-
-        {activeFilter === 'Plaats' ? (
+        <div className={styles.FilterRow}>
+          <div className={styles.TagArrow}>
+            <FaLocationDot className={styles.filterIcon} />
+            <span>Plaats</span>
+          </div>
+          {activeFilter === 'Plaats' ? (
             <IoIosArrowUp className={styles.arrowIcon} />
           ) : (
             <IoIosArrowDown className={styles.arrowIcon} />
           )}
+        </div>
+        <span className={styles.dateFilterText}>Vind events bij jou in de buurt</span>
       </div>
 
       {activeFilter === 'Plaats' && isOpen && (
@@ -59,13 +58,13 @@ const LocationFilter = ({ activeFilter, toggleFilter, selectedLocations, setSele
               'Amsterdam', 'Rotterdam', 'Den Haag', 'Utrecht', 'Eindhoven', 'Groningen', 'Maastricht', 'Tilburg',
               'Leiden', 'Delft', 'Arnhem', 'Nijmegen', 'Haarlem', 'Breda', 'Almere', 'Zwolle', 'Gouda',
               'Haarlemmermeer', 'Dordrecht', 'Enschede'
-            ].map((location) => (
+            ].sort().map((location) => (
               <span
                 key={location}
                 className={`${styles.option} ${localSelectedLocations.includes(location) ? styles.selected : ''}`}
                 onClick={(e) => {
-                  e.stopPropagation(); // Voorkom dat het filter zelf sluit
-                  toggleLocation(location); // Pas de selectie aan
+                  e.stopPropagation();
+                  toggleLocation(location);
                 }}
               >
                 {location}

@@ -8,6 +8,7 @@ import EventTypeFilter from './filters/EventTypeFilter';
 import LocationFilter from './filters/LocationFilter';
 import DateFilter from './filters/DateFilter';
 import GenreFilter from './filters/GenreFilter';
+import HolidayFilter from './filters/HolidayFilter'; // import de nieuwe HolidayFilter
 import styles from './styles/FilterMenu.module.css';
 
 const FilterMenu = ({ isOpen, closeMenu, onApplyFilters }) => {
@@ -17,6 +18,7 @@ const FilterMenu = ({ isOpen, closeMenu, onApplyFilters }) => {
   const [selectedEventTypes, setSelectedEventTypes] = useState<string[]>([]);
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
   const [selectedLocations, setSelectedLocations] = useState<string[]>([]);
+  const [selectedHolidays, setSelectedHolidays] = useState<string[]>([]); // state voor feestdagen
 
   useEffect(() => {
     if (isOpen) {
@@ -41,6 +43,7 @@ const FilterMenu = ({ isOpen, closeMenu, onApplyFilters }) => {
       ...selectedEventTypes,
       ...selectedGenres,
       ...selectedLocations,
+      ...selectedHolidays, // voeg geselecteerde feestdagen toe
     ];
 
     onApplyFilters(appliedFilters);
@@ -89,6 +92,12 @@ const FilterMenu = ({ isOpen, closeMenu, onApplyFilters }) => {
               toggleFilter={toggleFilter}
               selectedAgeRanges={selectedAgeRanges}
               setSelectedAgeRanges={setSelectedAgeRanges}
+            />
+            <HolidayFilter  // voeg de HolidayFilter toe aan de lijst van filters
+              activeFilter={activeFilter}
+              toggleFilter={toggleFilter}
+              selectedHolidays={selectedHolidays}
+              setSelectedHolidays={setSelectedHolidays}
             />
           </div>
         </div>
