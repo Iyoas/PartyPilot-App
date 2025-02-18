@@ -8,7 +8,8 @@ import EventTypeFilter from './filters/EventTypeFilter';
 import LocationFilter from './filters/LocationFilter';
 import DateFilter from './filters/DateFilter';
 import GenreFilter from './filters/GenreFilter';
-import HolidayFilter from './filters/HolidayFilter'; // import de nieuwe HolidayFilter
+import HolidayFilter from './filters/HolidayFilter';
+import SearchFilter from './filters/SearchFilter'; // Import SearchFilter
 import styles from './styles/FilterMenu.module.css';
 
 const FilterMenu = ({ isOpen, closeMenu, onApplyFilters }) => {
@@ -18,15 +19,10 @@ const FilterMenu = ({ isOpen, closeMenu, onApplyFilters }) => {
   const [selectedEventTypes, setSelectedEventTypes] = useState<string[]>([]);
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
   const [selectedLocations, setSelectedLocations] = useState<string[]>([]);
-  const [selectedHolidays, setSelectedHolidays] = useState<string[]>([]); // state voor feestdagen
+  const [selectedHolidays, setSelectedHolidays] = useState<string[]>([]);
 
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-
+    document.body.style.overflow = isOpen ? 'hidden' : '';
     return () => {
       document.body.style.overflow = '';
     };
@@ -43,9 +39,8 @@ const FilterMenu = ({ isOpen, closeMenu, onApplyFilters }) => {
       ...selectedEventTypes,
       ...selectedGenres,
       ...selectedLocations,
-      ...selectedHolidays, // voeg geselecteerde feestdagen toe
+      ...selectedHolidays,
     ];
-
     onApplyFilters(appliedFilters);
     closeMenu();
   };
@@ -63,6 +58,7 @@ const FilterMenu = ({ isOpen, closeMenu, onApplyFilters }) => {
             </button>
           </div>
           <div className={styles.filters}>
+          <SearchFilter /> 
             <DateFilter
               activeFilter={activeFilter}
               toggleFilter={toggleFilter}
@@ -93,7 +89,7 @@ const FilterMenu = ({ isOpen, closeMenu, onApplyFilters }) => {
               selectedAgeRanges={selectedAgeRanges}
               setSelectedAgeRanges={setSelectedAgeRanges}
             />
-            <HolidayFilter  // voeg de HolidayFilter toe aan de lijst van filters
+            <HolidayFilter
               activeFilter={activeFilter}
               toggleFilter={toggleFilter}
               selectedHolidays={selectedHolidays}
