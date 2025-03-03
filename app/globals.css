@@ -13,6 +13,8 @@
   /* Definieer de nieuwe kleuren als variabelen */
   --main-color: #F4EBFF; /* Hoofdkleur: licht paars */
   --background: #FDFDFD; /* Licht achtergrondkleur */
+  --green-background: #EBFFF0; /*Licht groen achtergrondkleur*/
+  --yellow-background: #FFF2EB; /*Licht geel achtergrondkleur*/
   --brand-color: #4E5BA6; /* Licht achtergrondkleur */
   --letter: #181D27; /* Licht achtergrondkleur */
   --light-background: #f4ebff70; 
