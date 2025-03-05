@@ -154,4 +154,81 @@
     font-size: 20px;
   }
   
-  
+  /* Arrow buttons */
+.ArrowButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.ArrowButton:hover {
+  background-color: rgba(255, 255, 255, 1);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.LeftButton {
+  left: 10px;
+}
+
+.RightButton {
+  right: 10px;
+}
+
+/* Modal overlay */
+/* Modal overlay */
+.ModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+}
+
+/* Modal content (flyer) */
+.ModalContent {
+  position: relative;
+  display: flex;
+  justify-content: center; /* Center the flyer horizontally */
+  align-items: center; /* Center the flyer vertically */
+  width: 100%;
+  height: 100%;
+}
+
+/* Close button in the top-right corner of the overlay */
+.CloseButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1002; /* Ensure it's above the image */
+}
+
+.CloseIcon {
+  font-size: 30px;
+  color: #fff;
+}
+
+.ModalImage {
+  max-width: 90%;
+  max-height: 85vh;
+  object-fit: contain;
+}

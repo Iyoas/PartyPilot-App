@@ -31,6 +31,17 @@ const GenreFilter = ({ activeFilter, toggleFilter, selectedGenres, setSelectedGe
     toggleFilter('Genre');
   };
 
+  // Uitgebreide en alfabetisch gesorteerde lijst van genres
+  const genres = [
+    '00s', '70s', '80s', '90s', 'Acid Techno', 'Afro', 'Afro House', 'Afro Tech', 'Afrobeat', 'Amapiano',
+    'Bachata', 'Baile Funk', 'Carribean', 'Classical', 'Classics', 'Dancehall', 'Deep House', 'Disco',
+    'Disco House', 'Drum & Bass', 'Early Hardcore', 'Early Hardstyle', 'Early Rave', 'Early Terror',
+    'EDM', 'Electric', 'Electro', 'Electronic', 'Eurodance', 'Freestyle', 'Funk', 'Garage House', 'Groove',
+    'Guilty Pleasures', 'Hard Techno', 'Hard Trance', 'Hardcore', 'Hip-Hop', 'Hits', 'House', 'Jazz',
+    'Latin', 'Latin House', 'Melodic Techno', 'Nederlands', 'Oldschool', 'Pop', 'R&B', 'Reggae', 'Tech House',
+    'Techno', 'Trance', 'UK Garage'
+  ].sort();
+
   return (
     <div className={styles.filterContainer}>
       <div
@@ -56,20 +67,18 @@ const GenreFilter = ({ activeFilter, toggleFilter, selectedGenres, setSelectedGe
       {activeFilter === 'Genre' && isOpen && (
         <div className={`${styles.filterContent} ${styles.active}`}>
           <div className={styles.optionsWrapper}>
-            {['Afro', 'Amapiano', 'House', 'Techno', 'Pop', 'Rock', 'Hip-Hop', 'Jazz', 'R&B', 'Classical', 'Reggae', 'Electronic', 'Blues']
-              .sort()
-              .map((genre) => (
-                <span
-                  key={genre}
-                  className={`${styles.option} ${localSelectedGenres.includes(genre) ? styles.selected : ''}`}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    toggleGenre(genre);
-                  }}
-                >
-                  {genre}
-                </span>
-              ))}
+            {genres.map((genre) => (
+              <span
+                key={genre}
+                className={`${styles.option} ${localSelectedGenres.includes(genre) ? styles.selected : ''}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  toggleGenre(genre);
+                }}
+              >
+                {genre}
+              </span>
+            ))}
           </div>
         </div>
       )}
