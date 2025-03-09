@@ -1,48 +1,83 @@
-"use client";
+'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import events from '@/app/events';
+import he from 'he';
 import styles from './EventDetails.module.css';
 import { ImInfo } from "react-icons/im";
 import { CgNotes } from "react-icons/cg";
 import { RiGroupLine } from "react-icons/ri";
 import { IoTicket } from "react-icons/io5";
-import { IoIosArrowForward } from "react-icons/io";
-import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowForward,IoIosArrowBack } from "react-icons/io";
+import { MdNotificationImportant } from "react-icons/md";
 import TopEventSection from '@/app/index/components/TopEventSection';
 import SocialCard from '@/app/index/components/SocialCard';
 import { ImCross } from "react-icons/im"; // Het kruis-icoon
 
+const BASE_IMAGE_URL = "https://partypilot.nl/"; // Zorg ervoor dat de juiste URL hier staat
+
 const EventPage = () => {
-  const { id } = useParams();
+  const { id } = useParams(); // Haal de event_id uit de URL
   const router = useRouter();
-  const [event, setEvent] = useState(null);
+  const [event, setEvent] = useState<any>(null);  // Typen aanpassen voor dynamische data
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImage, setModalImage] = useState("");
 
   const flyerRef = useRef(null);
 
+  // Haal de evenementen op via de API wanneer de component wordt geladen
   useEffect(() => {
-    const foundEvent = events.find((e) => e.id === Number(id));
-    setEvent(foundEvent);
+    const fetchEvents = async () => {
+      try {
+        const res = await fetch(`/api/fetchEvents`);
+        if (!res.ok) throw new Error(`Kan evenementen niet laden, status: ${res.status}`);
+        
+        const data = await res.json();
+    
+        // Log de ontvangen evenementen data
+        console.log('Ontvangen evenementen:', data.evenementen);
+        console.log('Zoeken naar evenement met ID:', id);
+    
+        // Zorg ervoor dat je de juiste array doorzoekt
+        const events = data.evenementen || [];  // Haal de evenementen op
+        const foundEvent = events.find((event: any) => event.evenement_id === id);  // Zoek naar het event met de juiste ID
+    
+        if (foundEvent) {
+          setEvent(foundEvent);
+        } else {
+          console.error("Event niet gevonden");
+        }
+      } catch (err) {
+        console.error("Fout bij ophalen van evenementen:", err);
+      }
+    };
+    
+    if (id) {
+      fetchEvents(); // Haal de evenementen alleen op als er een id is
+    }
   }, [id]);
+  
 
+  // Ga naar het volgende evenement
   const goToNextEvent = () => {
-    const nextEvent = events.find((e) => e.id === Number(id) + 1);
-    if (nextEvent) router.push(`/event/${nextEvent.id}`);
+    const nextEventId = Number(id) + 1;
+    router.push(`/event/${nextEventId}`);
   };
 
+  // Ga naar het vorige evenement
   const goToPreviousEvent = () => {
-    const prevEvent = events.find((e) => e.id === Number(id) - 1);
-    if (prevEvent) router.push(`/event/${prevEvent.id}`);
+    const prevEventId = Number(id) - 1;
+    router.push(`/event/${prevEventId}`);
   };
 
   const handleFlyerClick = () => {
-    setModalImage(event.flyer);
+    console.log("Flyer URL:", `${BASE_IMAGE_URL}${event.event_image}`); // Controleer de URL in de console
+    setModalImage(`${BASE_IMAGE_URL}${event.event_image}`);
     setIsModalOpen(true);
   };
+  
 
+  // Modal sluiten
   const closeModal = () => {
     setIsModalOpen(false);
   };
@@ -51,31 +86,57 @@ const EventPage = () => {
     return <p>Loading event details...</p>;
   }
 
+  // Functie om de datum te formatteren naar 'dag van de week, dagnummer maand' (bijv. 'vrijdag 7 maart')
+  const formatDateForDayHeader = (dateString: string) => {
+    const date = new Date(dateString);
+    const options: Intl.DateTimeFormatOptions = { weekday: 'long', day: 'numeric', month: 'long' };
+    return date.toLocaleDateString('nl-NL', options);
+  };
+
+  // Functie om de datum te formatteren naar 'dagnummer maand' (bijv. '7 mar')
+  const formatDateForEventInfo = (dateString: string) => {
+    const date = new Date(dateString);
+    const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short' };
+    return date.toLocaleDateString('nl-NL', options);
+  };
+
   return (
     <div>
-      <div className={styles.HeroSection}>
+      <div className={`${styles.HeroSection} ${event.ticketlink ? '' : styles.NoBorderRadius}`}>
         <div className={styles.FlyerSection}>
-          {/* Previous Event Button */}
+          {/* Vorig evenement knop */}
           <button onClick={goToPreviousEvent} className={`${styles.ArrowButton} ${styles.LeftButton}`}>
             <IoIosArrowBack />
           </button>
 
-          {/* Event Flyer Image */}
+          {/* Evenement flyer afbeelding */}
           <img
-            src={event.flyer}
-            alt={event.naam}
+            src={`${BASE_IMAGE_URL}${event.event_image}`}
+            alt={event.evenement_naam}
             className={styles.Flyer}
             ref={flyerRef}
             onClick={handleFlyerClick}
           />
-          <h1 className={styles.EventName}>{event.naam}</h1>
+          <h1 className={styles.EventName}>{event.evenement_naam}</h1>
 
-          {/* Next Event Button */}
+          {/* Volgend evenement knop */}
           <button onClick={goToNextEvent} className={`${styles.ArrowButton} ${styles.RightButton}`}>
             <IoIosArrowForward />
           </button>
         </div>
       </div>
+
+          {event.ticketlink && (
+      <div className={styles.Disclaimer}>
+        <div className={styles.DisclaimerContent}>
+          <MdNotificationImportant />
+          <span className={styles.DisclaimerText}>
+            Voor ticketvragen, neem contact op met de organisator.
+          </span>
+        </div>
+      </div>
+    )}
+
 
       <div className={styles.Container}>
         <div className={styles.Box}>
@@ -84,11 +145,20 @@ const EventPage = () => {
             <ImInfo className={styles.Detail} />
           </div>
           <div className={styles.Section}>
-            <p className={styles.Paragraph}><strong>Datum:</strong> {event.dag}, {event.nummerMaand}</p>
-            <p className={styles.Paragraph}><strong>Tijd:</strong> 20:00 - 02:00</p>
-            <p className={styles.Paragraph}><strong>Locatie:</strong> {event.stad}</p>
-            <p className={styles.Paragraph}><strong>Adres:</strong> Some street, 1234 AB {event.stad}</p>
-            <p className={styles.Paragraph}><strong>Genre:</strong> House, Techno</p>
+            {/* Formatteer datum voor weergeven */}
+            <p className={styles.Paragraph}><strong>Datum:</strong> {formatDateForDayHeader(event.datum)}</p>
+            <p className={styles.Paragraph}>
+              <strong>Tijd:</strong> {event.starttijd} - {event.eindtijd || 'onbekend'}
+            </p>
+            <p className={styles.Paragraph}><strong>Club:</strong> {event.locatie}</p>
+            <p className={styles.Paragraph}><strong>Adres: </strong>{event.adres}</p>
+            {event.muziekstijlen && event.muziekstijlen.trim() !== "" && (
+              <p className={styles.Paragraph}><strong>Genre:</strong> {event.muziekstijlen}</p>
+            )}
+
+            {event.leeftijd && (
+              <p className={styles.Paragraph}><strong>Leeftijd:</strong> {event.leeftijd}</p>
+            )}
           </div>
         </div>
 
@@ -98,7 +168,16 @@ const EventPage = () => {
             <CgNotes className={styles.Detail} />
           </div>
           <div className={styles.Section}>
-            <p>Dit is wat extra informatie over het event, zoals wat je mee moet nemen, dresscode, etc.</p>
+            <div>
+              {event.extra_info && event.extra_info.trim() !== "" ? (
+                event.extra_info.split(/<br\s*\/?>/g).map((line, index) =>
+                  line.trim() ? <p key={index}>{line}</p> : <br key={index} />
+                )
+              ) : (
+                <p>Geen extra info beschikbaar</p>
+              )}
+            </div>
+
           </div>
         </div>
 
@@ -108,21 +187,26 @@ const EventPage = () => {
             <RiGroupLine className={styles.Detail} />
           </div>
           <div className={styles.Section}>
-            <ul className={styles.LineupList}>
-              <li>DJ 1</li>
-              <li>DJ 2</li>
-              <li>DJ 3</li>
-            </ul>
+            {event.lineup && event.lineup.trim() !== "" ? (
+              <ul className={styles.LineupList}>
+                {event.lineup.split(/<br\s*\/?>/g).map((line, index) =>
+                  line.trim() ? <li key={index}>{he.decode(line)}</li> : null
+                )}
+              </ul>
+            ) : (
+              <p>Line-up niet beschikbaar</p>
+            )}
           </div>
         </div>
+
       </div>
 
       <TopEventSection />
       <SocialCard />
 
-      {event.ticket && (
+      {event.ticketlink && (
         <div className={styles.TicketContainer}>
-          <a href={event.ticket} target="_blank" rel="noopener noreferrer">
+          <a href={event.ticketlink} target="_blank" rel="noopener noreferrer">
             <button className={styles.TicketButton}>
               <IoTicket className={styles.TicketIcon} />
               Tickets

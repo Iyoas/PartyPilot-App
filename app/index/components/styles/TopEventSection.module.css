@@ -50,8 +50,7 @@
 }
 
 .event img {
-  object-fit: cover; 
-  height: auto; 
+  height: auto !important; 
   border-radius: 8px;
 }
 
@@ -78,9 +77,12 @@
 }
 
 .eventImage {
-  width: 100%;
-  height: auto;
-  border-radius: 5px; 
+  width: 300px !important; /* Standaard breedte */
+  height: 150px !important; /* Standaard hoogte */
+  object-fit: cover !important; /* Zorgt ervoor dat de afbeelding goed past */
+  border-radius: 8px !important;
+  display: block;
+  aspect-ratio: 2 / 1; /* Houdt de hoogte-breedteverhouding correct */
 }
 
 .TicketButton {
@@ -94,9 +96,10 @@
   gap: 8px;
   cursor: pointer;
   font-size: small;
-  margin-top: 5%;
-
+  margin-top: 0%;
+  margin-left: auto; /* Duwt de knop helemaal naar rechts */
 }
+
 
 .TicketButton:hover {
   background-color: var(--brand-color-dark);

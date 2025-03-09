@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { FaSearch } from "react-icons/fa";
 import { IoFilter } from "react-icons/io5";
 import styles from './styles/HeroSection.module.css';
-import events from '@/app/events';
 import FilterMenu from './FilterMenu';
 
 interface HeroSectionProps {
@@ -17,7 +16,23 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSearch, onApplyFilters }) =
   const [isOpen, setIsOpen] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
   const [isSticky, setIsSticky] = useState(false);
-  const eventCount = events.length;
+  const [fetchedEvents, setFetchedEvents] = useState<any[]>([]); // Hier wordt de fetched data opgeslagen
+
+  useEffect(() => {
+    // Haal de evenementen op bij het laden van de component
+    const fetchEvents = async () => {
+      try {
+        const res = await fetch("/api/fetchEvents");
+        if (!res.ok) throw new Error("Kan data niet laden");
+        const data = await res.json();
+        setFetchedEvents(data.evenementen); // Zet de fetched events
+      } catch (err) {
+        console.error("Fout bij ophalen van evenementen:", err);
+      }
+    };
+
+    fetchEvents();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,6 +61,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSearch, onApplyFilters }) =
     setSelectedFilters(appliedFilters);
     onApplyFilters(appliedFilters);
   };
+
+  // Gebruik fetchedEvents om eventCount bij te werken
+  const eventCount = fetchedEvents.length;
 
   return (
     <div className={styles.HeroSection}>

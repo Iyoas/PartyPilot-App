@@ -1,69 +1,69 @@
-.Events{
-    padding: 0.7em;
-    font-size: 1.6em;
-    font-weight: bold;
-    font-family: 'Poppins', sans-serif;
+.Events {
+  padding: 0.7em;
+  font-size: 1.6em;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
 }
 
-.EventsList{
-    padding: 0.7rem;
-    gap: 2em !important;
+.EventsList {
+  padding: 0.7rem;
+  gap: 2em !important;
 }
 
 .DayHeader {
   font-size: 1em;
   background-color: var(--main-color);
   color: var(--brand-color);
-  min-width: 30%; 
-  width: fit-content; 
+  min-width: 30%;
+  width: fit-content;
   border-radius: 10px;
   padding: 0.6em;
   font-weight: 600;
-  white-space: nowrap; 
+  white-space: nowrap;
 }
 
 .Event {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 10px;
-    margin-top: 5%;
-    gap: 1em;
-  }
+  display: flex;
+  flex-direction: row; /* Zorgt ervoor dat de button onder de andere content komt */
+  margin-bottom: 10px;
+  margin-top: 5%;
+  gap: 1em;
+}
 
 .Event:hover {
-    transform: translateY(-2px);
-    background: rgb(250, 250, 250);
-  }
-  
-  
-.Flyer {
-    width:80px;
-    height: 70px;
-    margin-top: 5%;
-    border-radius: 10px;
-  }
-  .EventItem {
-    padding: 0.7em;
-    border-radius: 8px;
-  }  
+  transform: translateY(-2px);
+  background: rgb(250, 250, 250);
+}
 
-.EventName{
+.Flyer {
+  width: 80px;
+  height: 70px;
+  margin-top: 5%;
+  border-radius: 10px;
+}
+
+.EventItem {
+  padding: 0.7em;
+  border-radius: 8px;
+}
+
+.EventName {
   font-size: medium;
   font-weight: 600;
 }
 
-.EventInfo{
-  font-size:0.9rem;
+.EventInfo {
+  font-size: 0.9rem;
   color: #666666af;
   font-style: italic;
-  font-weight: 100;
+  font-weight: 300;
 }
 
-.EventDetails{
+.EventDetails {
   margin-top: 5%;
 }
 
-.EventGroup{
+.EventGroup {
   margin-bottom: 3em;
 }
 
@@ -78,8 +78,8 @@
   gap: 8px;
   cursor: pointer;
   font-size: small;
-  margin-top: 50%;
-
+  margin-top: 15%; /* Verticale uitlijning blijft behouden */
+  margin-left: auto; /* Zorgt ervoor dat de button naar rechts wordt uitgelijnd */
 }
 
 .TicketButton:hover {
@@ -93,7 +93,25 @@
 .EventDivider {
   border: none;
   width: 100%;
-  height: 1px; 
-  background: rgba(224, 224, 224, 0.2); 
-  box-shadow: 0 0.5px 0 rgba(24, 29, 39, 0.1); 
+  height: 1px;
+  background: rgba(224, 224, 224, 0.2);
+  box-shadow: 0 0.2px 0 rgba(24, 29, 39, 0.1);
+}
+
+.LoadMoreButton {
+  background-color: var(--brand-color);
+  color: var(--background);
+  border: none;
+  padding: 12px 25px;
+  margin: 20px auto;
+  border-radius: 8px;
+  cursor: pointer;
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.LoadMoreButton:hover {
+  background-color: #3f4d9f;
+  transform: scale(1.05);
 }

@@ -70,8 +70,7 @@
   }
 
   .BlogButton:hover {
-    background-color: var(--background);
-    color:var(--brand-color);
+    background-color: #3f4d9f;
     transform: scale(1.05); 
   }
   

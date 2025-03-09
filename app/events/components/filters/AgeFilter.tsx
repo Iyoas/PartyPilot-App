@@ -1,13 +1,35 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
 import { FaPassport } from 'react-icons/fa6';
 import styles from '../styles/FilterMenu.module.css';
+import { useRouter } from 'next/navigation';
 
 const AgeFilter = ({ activeFilter, toggleFilter, selectedAgeRanges, setSelectedAgeRanges }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [localSelectedAgeRanges, setLocalSelectedAgeRanges] = useState(selectedAgeRanges);
+  const router = useRouter();
+
+  // Functie om de leeftijdsselecties naar de URL door te sturen
+  const updateURL = () => {
+    const query = [];
+
+    // Voeg de leeftijdsfilters toe aan de query als er geselecteerde leeftijdsbereiken zijn
+    if (localSelectedAgeRanges.length > 0) {
+      query.push(localSelectedAgeRanges.join('/'));
+    }
+
+    const newUrl = `/events/${query.join('/')}`;
+    router.push(newUrl);
+  };
+
+  useEffect(() => {
+    // Update de URL als de geselecteerde leeftijdsbereiken veranderen
+    if (localSelectedAgeRanges !== selectedAgeRanges) {
+      updateURL();
+    }
+  }, [localSelectedAgeRanges]);
 
   const toggleAgeRange = (ageRange) => {
     setLocalSelectedAgeRanges((prev) => {

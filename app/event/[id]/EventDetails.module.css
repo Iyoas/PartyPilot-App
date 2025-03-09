@@ -17,8 +17,6 @@
     flex-direction: column;
     background-color: var(--main-color);
     min-height: 20vh;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
 }
   
 .Section {
@@ -38,11 +36,13 @@
 }
 
 .Flyer {
-    width: 80%;
-    height: auto;
-    border-radius: 10px; 
-    margin-bottom: 10px;
+  width: 80%;
+  max-height: 250px; /* Pas dit aan naar een gewenste maximale hoogte */
+  object-fit: scale-down; /* Zorgt ervoor dat de afbeelding niet uitrekt maar goed in de container past */
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
+
   
 .EventName {
     font-size: 24px;
@@ -77,7 +77,31 @@
     border-bottom: 0.5px solid #6666;
     font-size: 1.3em;
 }
-  
+/* Disclaimer Section */
+.Disclaimer {
+  background: var(--light-background);
+  color: #181d276e;
+  padding: 8px 0;
+  font-size: 0.8rem;
+  border-radius: 0px 0px 10px 10px;
+  margin-top: 0px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.DisclaimerContent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 10px; /* Zorgt ervoor dat alleen icoon + tekst opschuiven */
+}
+
+.DisclaimerText {
+  padding-left: 0; /* Niet meer nodig door gap */
+}
+
 .Box{
     display: flex;
     flex-direction: column;
@@ -127,7 +151,7 @@
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: center;
-    z-index: 1000;
+    z-index: 700;
   }
   
   .TicketButton {
