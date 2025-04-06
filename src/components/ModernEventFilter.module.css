@@ -1,0 +1,261 @@
+.filterBox {
+  background-color: #f8f8f8;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+/* Zoekbalk en filter knoppen */
+.filterControls {
+  display: flex;
+  margin-bottom: 1rem;
+  width: 100%;
+  padding: 0 0.7em;
+  background-color: rgba(78, 91, 166, 0.05);
+  border-radius: 8px;
+  padding: 0.8rem 0.7em;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Zoekbalk container stijl */
+.searchContainer {
+  display: flex;
+  width: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(78, 91, 166, 0.1);
+}
+
+/* Zoekbalk stijl */
+.searchInput {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  background-color: white;
+  color: var(--letter);
+  font-weight: 500;
+}
+
+.searchInput::placeholder {
+  color: #666666af;
+  font-weight: 300;
+}
+
+/* Zoekknop stijl */
+.searchButton {
+  background-color: #4E5BA6;
+  color: white;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.searchButton:hover {
+  background-color: #3f4d9f;
+}
+
+/* Filter knop stijl */
+.filterButton {
+  background-color: #4E5BA6 !important;
+/*   color: white !important; */
+  box-shadow: none !important;
+  border-radius: 5px !important;
+  padding: 0.5rem 1rem !important;
+  min-width: 45px !important;
+  }
+
+.filterButton:hover {
+  background-color: #3f4d9f !important;
+}
+
+/* Override voor icon alignment */
+.filterButton svg {
+  margin: 0 !important;
+}
+
+.sectionHeader {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #333333;
+  margin-left: 0.5rem;
+}
+
+.iconStyle {
+  color: #4E5BA6;
+  font-size: 1.2rem;
+  margin-right: 0.75rem;
+}
+
+.chipSelected {
+  background-color: #4E5BA6;
+  color: white;
+  border-radius: 20px;
+  font-weight: 500;
+  border: none;
+  margin: 0.25rem;
+}
+
+.chipSelected:hover {
+  background-color: #3f4d9f;
+}
+
+.chipUnselected {
+  background-color: white;
+  color: #333;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  margin: 0.25rem;
+}
+
+.chipUnselected:hover {
+  background-color: #f5f5f5;
+}
+
+.clearButton {
+  color: #4E5BA6;
+  border-color: #4E5BA6;
+  text-transform: none;
+  font-weight: 500;
+  width: 100%;
+}
+
+.clearButton:hover {
+  border-color: #3f4d9f;
+  background-color: rgba(78, 91, 166, 0.04);
+}
+
+.dateButton {
+  color: #4E5BA6;
+  border-color: #4E5BA6;
+  text-transform: none;
+  font-weight: 500;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.dateButton:hover {
+  border-color: #3f4d9f;
+  background-color: rgba(78, 91, 166, 0.04);
+}
+
+.sectionBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.sectionBox:hover {
+  background-color: rgba(78, 91, 166, 0.04);
+}
+
+.sectionBoxActive {
+  background-color: rgba(78, 91, 166, 0.06);
+}
+
+.activeFilterChip {
+  background-color: #4E5BA6;
+  color: white;
+  font-weight: 500;
+  /* margin: 0.25rem; */
+  border: none;
+  padding: 0.5em 0.7em;
+  border-radius: 4px;
+}
+
+.activeFilterChip span {
+  color: white;
+}
+
+.activeFilterChip svg {
+  color: white;
+}
+
+.activeFilterChip svg:hover {
+  color: #f0f0f0;
+}
+
+.filterTitle {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.activeFiltersTitle {
+  margin-bottom: 0.7rem;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.chipsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  padding-top: 0.25rem;
+}
+
+.arrowUp {
+  color: #4E5BA6;
+}
+
+.arrowDown {
+  color: #666;
+}
+
+.filtersBox {
+  margin-bottom: 1.5rem;
+}
+
+.divider {
+  margin: 0.75rem 0;
+  opacity: 0.6;
+}
+
+.drawerPaper {
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.contentBox {
+  padding: 1rem;
+  width: 350px;
+}
+
+.mobileContentBox {
+  padding: 1rem;
+  width: 100%;
+}
+
+.headerBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 0 0.5rem;
+}
+
+.closeIcon {
+  color: #666;
+}
+
+.activeFiltersBox {
+  margin: 0.7em;
+  padding: 0 0.7em;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}

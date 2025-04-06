@@ -115,3 +115,23 @@
   background-color: #3f4d9f;
   transform: scale(1.05);
 }
+
+.NoResultsMessage {
+  text-align: center;
+  padding: 40px 0.7em;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin: 0.7em;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+}
+
+.NoResultsMessage p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.NoResultsMessage p:first-child {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #333;
+}
