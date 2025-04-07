@@ -6,6 +6,7 @@
   font-weight: 600;
   font-size: 26px; 
   padding: 0.7em;
+  margin-bottom: 1rem;
 }
 
 .eventContainer {
@@ -13,7 +14,7 @@
   overflow-x: auto;
   height: 42vh;
   width: 100%;
-  padding: 0.7em;
+  padding: 0.8em;
   margin-top: -5%;
 }
 
@@ -27,10 +28,11 @@
   margin-right: 15px;
   width: 85%;
   padding: 10px;
-  background: rgb(245, 245, 245);
+  background:#d0ffce5a;
   border-radius: 10px;
   margin-bottom: 5%;
   transition: transform 0.3s ease;
+  border: 0.1px solid rgba(0, 0, 0, 0.4);
   min-height: 200px;     
 }
 
@@ -46,7 +48,7 @@
 
 .eventLink:hover {
   transform: translateY(-5px);
-  background: rgb(235, 235, 235);
+  background: #ccfcca;
 }
 
 .event img {
@@ -86,8 +88,8 @@
 }
 
 .TicketButton {
-  background-color: var(--main-color);
-  color: var(--brand-color);
+  background-color: var(--brand-color);
+  color: white;
   font-weight: 600;
   border-radius: 8px;
   display: flex;

@@ -20,6 +20,7 @@
   padding: 0.6em;
   font-weight: 600;
   white-space: nowrap;
+  border: 0.3px solid #4E5BA6;
 }
 
 .Event {
@@ -68,7 +69,7 @@
 }
 
 .TicketButton {
-  background-color: var(--main-color);
+  background-color: var(--button);
   color: var(--brand-color);
   font-weight: 600;
   border-radius: 8px;

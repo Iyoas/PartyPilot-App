@@ -23,25 +23,27 @@
   justify-content: center; 
   align-items: center; 
   flex-direction: row; 
-  background-color: var(--brand-color); 
-  color: var(--background);
+  background-color: var(--button); 
+  color: var(--brand-color);
   font-weight: 600;
-  border-radius: 15px;
+  border: 1px solid #4e5ba670;
+  border-radius: 12px;
   font-size: 1rem;
   cursor: pointer;
   height: 46px;  
   min-width: 187px;  
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.25);
   transition: background-color 0.3s ease, transform 0.2s ease; 
 }
 
 .EventButton:hover {
-  background-color: #3f4d9f;
+  background-color: #c6ffc4;
   transform: scale(1.05); 
 }
 
 .EventButton:active {
   transform: scale(0.95);
-  background-color: #2d3a71; 
+  background-color: #c6ffc4; 
 }
 
 
