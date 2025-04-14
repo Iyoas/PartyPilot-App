@@ -10,8 +10,8 @@ import { RiGroupLine } from "react-icons/ri";
 import { IoTicket } from "react-icons/io5";
 import { IoIosArrowForward,IoIosArrowBack } from "react-icons/io";
 import { MdNotificationImportant } from "react-icons/md";
-import TopEventSection from '@/app/index/components/TopEventSection';
-import SocialCard from '@/app/index/components/SocialCard';
+import TopEventSection from '@/src/components/TopEventSection';
+import SocialCard from '@/src/components/SocialCard';
 import { ImCross } from "react-icons/im"; // Het kruis-icoon
 
 const BASE_IMAGE_URL = "https://partypilot.nl/"; // Zorg ervoor dat de juiste URL hier staat

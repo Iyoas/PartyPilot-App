@@ -4,8 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { FaSearch } from "react-icons/fa";
 import { IoFilter } from "react-icons/io5";
 import styles from './styles/HeroSection.module.css';
-import ModernEventFilter from '@/src/components/ModernEventFilter';
-import ActiveFilters from '@/src/components/ActiveFilters';
+import ModernEventFilter from './ModernEventFilter';
+import ActiveFilters from './ActiveFilters';
 
 interface HeroSectionProps {
   onSearch: (searchTerm: string) => void;

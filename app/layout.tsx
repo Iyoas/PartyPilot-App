@@ -1,8 +1,8 @@
 'use client';
 
 import './globals.css';
-import Header from './index/components/Header';
-import Footer from './index/components/Footer';
+import Header from '@/src/components/Header';
+import Footer from '@/src/components/Footer';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

@@ -12,10 +12,9 @@ import { FaMusic } from 'react-icons/fa6';
 import { BiSolidParty } from "react-icons/bi";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
-import DatePickerComponent from '../../app/events/components/filters/DatePicker';
 import dayjs from 'dayjs';
-import styles from './ModernEventFilter.module.css';
-import ActiveFilters from '@/src/components/ActiveFilters';
+import styles from './styles/ModernEventFilter.module.css';
+import ActiveFilters from './ActiveFilters';
 
 const ModernEventFilter = ({ onFilterChange, onSearch, onApplyFilters }) => {
   const theme = useTheme();

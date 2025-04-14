@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { IoMenu } from 'react-icons/io5';
 import Link from 'next/link';  // Importeer Link van Next.js
 import styles from './styles/Header.module.css';
-import HamburgerMenu from '../components/HamburgerMenu';
+import HamburgerMenu from '@/app/index/components/HamburgerMenu';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);

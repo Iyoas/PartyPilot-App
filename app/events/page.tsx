@@ -1,12 +1,12 @@
 "use client";
 import Layout from '../layout'; 
 import FilterSection from './components/FilterSection';
-import ActiveFilters from '@/src/components/ActiveFilters';
+import ActiveFilters from './components/ActiveFilters';
 import Events from './components/Events'; 
-import TopEventSection from '../index/components/TopEventSection';
+import TopEventSection from '@/src/components/TopEventSection';
 import styles from '../index/components/styles/Page.module.css'; 
-import BlogSection from '../index/components/BlogSection';
-import SocialCard from '../index/components/SocialCard';
+import BlogSection from '@/src/components/BlogSection';
+import SocialCard from '@/src/components/SocialCard';
 import { useState } from 'react';
 import HeroSection from './components/HeroSection';
 

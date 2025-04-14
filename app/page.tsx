@@ -1,10 +1,10 @@
 import Layout from './layout';
 import HeroSection from './index/components/HeroSection';
 import Events from './index/components/Events';
-import TopEventSection from './index/components/TopEventSection';
+import TopEventSection from '@/src/components/TopEventSection';
 import styles from './index/components/styles/Page.module.css'; 
-import BlogSection from './index/components/BlogSection';
-import SocialCard from './index/components/SocialCard';
+import BlogSection from '@/src/components/BlogSection';
+import SocialCard from '@/src/components/SocialCard';
 
 export default function HomePage() {
   return (

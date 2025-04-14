@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { RxCross1 } from 'react-icons/rx';
 import styles from './styles/HamburgerMenu.module.css';
-import styles2 from './styles/Header.module.css';
+import styles2 from '@/src/components/styles/Header.module.css';
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 import { IoTicketSharp } from "react-icons/io5";
 
