@@ -64,8 +64,8 @@
   
   /* Filter knop stijl */
   .filterButton {
-    background-color: #4E5BA6 !important;
-  /*   color: white !important; */
+    background-color: var(--button) !important;
+    color:var(--brand-color);
     box-shadow: none !important;
     border-radius: 5px !important;
     padding: 0.5rem 1rem !important;
@@ -73,12 +73,12 @@
     }
   
   .filterButton:hover {
-    background-color: #3f4d9f !important;
+    background-color: #bcfcba !important;
   }
   
   /* Override voor icon alignment */
   .filterButton svg {
-    margin: 0 !important;
+    font-size: 1.5rem !important;
   }
   
   .sectionHeader {
@@ -258,4 +258,5 @@
     padding: 0 0.7em;
     margin-top: 1rem;
     margin-bottom: 2rem;
+    overflow-y: scroll !important;
   }

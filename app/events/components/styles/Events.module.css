@@ -20,7 +20,8 @@
   padding: 0.6em;
   font-weight: 600;
   white-space: nowrap;
-  border: 0.3px solid #4E5BA6;
+  border: 0.15px solid #4E5BA6;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .Event {
@@ -69,13 +70,13 @@
 }
 
 .TicketButton {
-  background-color: var(--button);
+  background-color: rgba(255, 206, 206, 0.4);
   color: var(--brand-color);
   font-weight: 600;
   border-radius: 8px;
   display: flex;
   align-items: center;
-  padding: 2px 8px;
+  padding: 4px 8px;
   gap: 8px;
   cursor: pointer;
   font-size: small;

@@ -4,7 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { FaSearch } from "react-icons/fa";
 import { IoFilter } from "react-icons/io5";
 import styles from './styles/HeroSection.module.css';
-import FilterMenu from './FilterMenu';
+import ModernEventFilter from '@/src/components/ModernEventFilter';
+import ActiveFilters from '@/src/components/ActiveFilters';
 
 interface HeroSectionProps {
   onSearch: (searchTerm: string) => void;
@@ -14,18 +15,25 @@ interface HeroSectionProps {
 const HeroSection: React.FC<HeroSectionProps> = ({ onSearch, onApplyFilters }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
   const [isSticky, setIsSticky] = useState(false);
-  const [fetchedEvents, setFetchedEvents] = useState<any[]>([]); // Hier wordt de fetched data opgeslagen
+  const [fetchedEvents, setFetchedEvents] = useState<any[]>([]);
+
+  // States for selected filters
+  const [searchTerms, setSearchTerms] = useState<string[]>([]);
+  const [selectedDateRanges, setSelectedDateRanges] = useState<string[]>([]);
+  const [selectedAgeRanges, setSelectedAgeRanges] = useState<string[]>([]);
+  const [selectedEventTypes, setSelectedEventTypes] = useState<string[]>([]);
+  const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
+  const [selectedLocations, setSelectedLocations] = useState<string[]>([]);
+  const [selectedHolidays, setSelectedHolidays] = useState<string[]>([]);
 
   useEffect(() => {
-    // Haal de evenementen op bij het laden van de component
     const fetchEvents = async () => {
       try {
         const res = await fetch("/api/fetchEvents");
         if (!res.ok) throw new Error("Kan data niet laden");
         const data = await res.json();
-        setFetchedEvents(data.evenementen); // Zet de fetched events
+        setFetchedEvents(data.evenementen);
       } catch (err) {
         console.error("Fout bij ophalen van evenementen:", err);
       }
@@ -36,7 +44,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSearch, onApplyFilters }) =
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 250) { // Sticky wordt geactiveerd na 100px scrollen
+      if (window.scrollY > 250) {
         setIsSticky(true);
       } else {
         setIsSticky(false);
@@ -44,7 +52,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSearch, onApplyFilters }) =
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
@@ -55,14 +65,18 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSearch, onApplyFilters }) =
     }
   };
 
-  const toggleMenu = () => setIsOpen(!isOpen);
-
   const handleApplyFilters = (appliedFilters: string[]) => {
-    setSelectedFilters(appliedFilters);
     onApplyFilters(appliedFilters);
+    // Update state for active filters
+    setSearchTerms(appliedFilters.filter(f => f.includes('searchTerm')));
+    setSelectedDateRanges(appliedFilters.filter(f => f.includes('Datum')));
+    setSelectedAgeRanges(appliedFilters.filter(f => f.includes('Leeftijd')));
+    setSelectedEventTypes(appliedFilters.filter(f => f.includes('Type Event')));
+    setSelectedGenres(appliedFilters.filter(f => f.includes('Genre')));
+    setSelectedLocations(appliedFilters.filter(f => f.includes('Locatie')));
+    setSelectedHolidays(appliedFilters.filter(f => f.includes('Feestdag')));
   };
 
-  // Gebruik fetchedEvents om eventCount bij te werken
   const eventCount = fetchedEvents.length;
 
   return (
@@ -75,35 +89,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSearch, onApplyFilters }) =
 
       {/* Zoekbalk en filterknop */}
       <form className={`${styles.FilterContainer} ${isSticky ? styles.sticky : ''}`} onSubmit={handleSearchSubmit}>
-        <div className={styles.searchContainer}>
-          <FaSearch className={styles.searchIcon} />
-          <input
-            type="text"
-            placeholder="Zoek op stad, event, artiest..."
-            className={styles.searchInput}
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </div>
-
-        {/* Filterknop met badge */}
-        <div className={styles.FilterBox} onClick={toggleMenu}>
-          <IoFilter className={styles.FilterIcon} />
-          {selectedFilters.length > 0 && (
-            <span className={styles.FilterBadge}>{selectedFilters.length}</span>
-          )}
-        </div>
-      </form>
-
-      {/* FilterMenu */}
-      {isOpen && (
-        <FilterMenu 
-          isOpen={isOpen} 
-          closeMenu={() => setIsOpen(false)} 
-          onApplyFilters={handleApplyFilters} 
-          selectedFilters={selectedFilters} 
+        <ModernEventFilter
+          key="unique-key"
+          onSearch={onSearch}
+          onApplyFilters={handleApplyFilters}
         />
-      )}
+      </form>
     </div>
   );
 };

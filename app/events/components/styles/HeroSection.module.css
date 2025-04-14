@@ -47,13 +47,17 @@
 
 .EventCount {
   margin-top: 5%;
-  font-size: small;
+  background-color: #ffcece65;
+  padding: 5px;
+  border-radius: 5px;
+  color: var(--brand-color);
+  font-size: 0.8rem;
   font-weight: 350;
 }
 
 .FilterContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 1em;
   width: 100%;
 }

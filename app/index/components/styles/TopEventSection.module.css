@@ -14,7 +14,7 @@
   overflow-x: auto;
   height: 42vh;
   width: 100%;
-  padding: 0.8em;
+  padding: 0.85em;
   margin-top: -5%;
 }
 
@@ -28,11 +28,12 @@
   margin-right: 15px;
   width: 85%;
   padding: 10px;
-  background:#d0ffce5a;
-  border-radius: 10px;
+  background: #cef4ff5a;
+  box-shadow: 0.15rem 0.15rem 0rem rgb(100, 100, 100);
+  border-radius: 5px;
   margin-bottom: 5%;
   transition: transform 0.3s ease;
-  border: 0.1px solid rgba(0, 0, 0, 0.4);
+  border: 0.5px solid rgba(0, 0, 0, 1);
   min-height: 200px;     
 }
 
@@ -48,7 +49,7 @@
 
 .eventLink:hover {
   transform: translateY(-5px);
-  background: #ccfcca;
+  box-shadow: 0.25rem 0.25rem 0rem rgb(100, 100, 100);
 }
 
 .event img {
@@ -100,11 +101,6 @@
   font-size: small;
   margin-top: 0%;
   margin-left: auto; /* Duwt de knop helemaal naar rechts */
-}
-
-
-.TicketButton:hover {
-  background-color: var(--brand-color-dark);
 }
 
 .TicketIcon {

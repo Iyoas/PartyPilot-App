@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Button, Chip, Collapse, Divider, Stack, Typography, IconButton, Drawer, useMediaQuery } from '@mui/material';
+import { FaFilter } from "react-icons/fa6";
 import { useTheme } from '@mui/material/styles';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import CloseIcon from '@mui/icons-material/Close';
@@ -14,6 +15,7 @@ import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
 import DatePickerComponent from '../../app/events/components/filters/DatePicker';
 import dayjs from 'dayjs';
 import styles from './ModernEventFilter.module.css';
+import ActiveFilters from '@/src/components/ActiveFilters';
 
 const ModernEventFilter = ({ onFilterChange, onSearch, onApplyFilters }) => {
   const theme = useTheme();
@@ -196,6 +198,7 @@ const ModernEventFilter = ({ onFilterChange, onSearch, onApplyFilters }) => {
             <IoIosArrowDown className={styles.arrowDown} />
           }
         </div>
+      
         
         <Collapse in={isActive}>
           <div className={styles.chipsContainer}>
@@ -371,9 +374,9 @@ const ModernEventFilter = ({ onFilterChange, onSearch, onApplyFilters }) => {
     return (
       <Box className={styles.activeFiltersBox}>
         <Typography variant="body2" className={styles.activeFiltersTitle}>
-          Actieve filters:
+          Geselecteerd:
         </Typography>
-        <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+        <Stack direction="row" spacing={1} flexWrap="nowrap" useFlexGap>
           {/* Display all search terms as chips */}
           {searchTerms.map((term, index) => (
             <Chip
@@ -434,7 +437,7 @@ const ModernEventFilter = ({ onFilterChange, onSearch, onApplyFilters }) => {
             className={styles.filterButton}
             sx={{ ml: 1, minWidth: 'auto', boxShadow: 'none' }}
           >
-            <FilterListIcon />
+            <FaFilter />
             {activeFilterCount > 0 ? 
               <span style={{ marginLeft: '2px' }}>{activeFilterCount}</span> : 
               null
