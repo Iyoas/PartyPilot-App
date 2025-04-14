@@ -1,16 +1,32 @@
 "use client";
-import Layout from '../layout'; 
+import { redirect } from 'next/navigation';
+import { useParams } from 'next/navigation';  // Import voor params
+import React, { useState, useEffect } from 'react';
+
+import Layout from '../layout';
 import FilterSection from './components/FilterSection';
 import ActiveFilters from './components/ActiveFilters';
-import Events from './components/Events'; 
+import Events from './components/Events';
 import TopEventSection from '@/src/components/TopEventSection';
-import styles from '../index/components/styles/Page.module.css'; 
+import styles from '../index/components/styles/Page.module.css';
 import BlogSection from '@/src/components/BlogSection';
 import SocialCard from '@/src/components/SocialCard';
-import { useState } from 'react';
 import HeroSection from './components/HeroSection';
 
-export default function EventsPage() {
+type PageProps = {
+  params: {
+    locale: string;
+  };
+};
+
+export default function EventsPage({ params }: PageProps) {
+  const { locale } = params;
+
+  if (locale === 'default') {
+    redirect('/nl');
+    return null;
+  }
+
   const [searchTerms, setSearchTerms] = useState([]);
   const [selectedDateRanges, setSelectedDateRanges] = useState([]);
   const [selectedAgeRanges, setSelectedAgeRanges] = useState([]);
@@ -18,6 +34,7 @@ export default function EventsPage() {
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [selectedLocations, setSelectedLocations] = useState([]);
   const [selectedHolidays, setSelectedHolidays] = useState([]);
+  const [eventCount, setEventCount] = useState(0); // Voeg eventCount toe
 
   const handleApplyFilters = (appliedFilters) => {
     if (appliedFilters.dates) setSelectedDateRanges(appliedFilters.dates);
@@ -26,7 +43,6 @@ export default function EventsPage() {
     if (appliedFilters.genres) setSelectedGenres(appliedFilters.genres);
     if (appliedFilters.locations) setSelectedLocations(appliedFilters.locations);
     if (appliedFilters.holidays) setSelectedHolidays(appliedFilters.holidays);
-
   };
 
   const handleRemoveFilter = (filterType, value) => {
@@ -60,9 +76,11 @@ export default function EventsPage() {
   return (
     <Layout>
       <div className={styles.Container}>
-        <HeroSection 
+        <HeroSection
+          locale={locale}
           onSearch={(searchTerm) => setSearchTerms([...searchTerms, searchTerm])}
-          onApplyFilters={handleApplyFilters} 
+          onApplyFilters={handleApplyFilters}
+          eventCount={eventCount} // Geef eventCount door aan HeroSection
         />
         <ActiveFilters
           filters={{
@@ -72,12 +90,12 @@ export default function EventsPage() {
             selectedEventTypes,
             selectedGenres,
             selectedLocations,
-            selectedHolidays
+            selectedHolidays,
           }}
           onRemoveFilter={handleRemoveFilter}
         />
-        <TopEventSection />
-        <Events />  
+        <TopEventSection locale={locale} />
+        <Events locale={locale} setEventCount={setEventCount} /> {/* Geef setEventCount door */}
         <BlogSection />
         <SocialCard />
       </div>

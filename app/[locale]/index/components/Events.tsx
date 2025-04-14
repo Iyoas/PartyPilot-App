@@ -15,18 +15,21 @@ interface Event {
   ticketlink?: string;
 }
 
+interface EventsProps {
+  locale: string;
+}
+
 // Basis URL voor afbeeldingen
 const BASE_IMAGE_URL = "https://partypilot.nl/";
 
-const Events: React.FC = () => {
+const Events: React.FC<EventsProps> = ({ locale }) => {
   const [events, setEvents] = useState<Event[]>([]);
   const [error, setError] = useState<string | null>(null);
 
-  // Haal de evenementen op bij het laden van de component
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await fetch("/api/fetchEvents");
+        const res = await fetch(`/${locale}/api/fetchEvents`);
         if (!res.ok) throw new Error("Kan data niet laden");
         const data = await res.json();
         setEvents(data.evenementen);
@@ -37,24 +40,17 @@ const Events: React.FC = () => {
     };
 
     fetchEvents();
-  }, []);
+  }, [locale]);
 
-  // Functie om de datum te formatteren naar 'dagnummer maand' (bijv. '7 mar')
   const formatDateForEventInfo = (dateString: string) => {
     const date = new Date(dateString);
     const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short' };
-
-    // Verkrijg de datum in het gewenste formaat
-    const formattedDate = date.toLocaleDateString('nl-NL', options);
-
-    // Verwijder de punt die soms aan het einde van de datum staat
-    return formattedDate.replace('.', '');
+    return date.toLocaleDateString('nl-NL', options).replace('.', '');
   };
 
   if (error) return <p className={styles.Error}>{error}</p>;
   if (!events.length) return <p className={styles.Loading}>Laden...</p>;
 
-  // Beperk de lijst van evenementen tot de eerste 10
   const limitedEvents = events.slice(0, 10);
 
   return (
@@ -62,11 +58,10 @@ const Events: React.FC = () => {
       <p className={styles.Events}>Ontdek Feestjes</p>
       <div className={styles.EventsList}>
         {limitedEvents.map((event, index) => {
-          // Controleer of de afbeelding al een volledig pad heeft
           const imageUrl =
-            event.event_image.startsWith("http") || event.event_image.startsWith("https")
-              ? event.event_image // Als het al een volledige URL is
-              : `${BASE_IMAGE_URL}${event.event_image}`; // Voeg de basis-URL toe als dat niet het geval is
+            event.event_image.startsWith("http")
+              ? event.event_image
+              : `${BASE_IMAGE_URL}${event.event_image}`;
 
           return (
             <React.Fragment key={event.evenement_id}>
@@ -76,12 +71,10 @@ const Events: React.FC = () => {
                   <img src={imageUrl} alt={event.evenement_naam} className={styles.Flyer} />
                   <div className={styles.EventDetails} style={{ marginLeft: '10px', flex: 1 }}>
                     <h3 className={styles.EventName}>{event.evenement_naam}</h3>
-                    {/* Datum en stad in 1 div */}
                     <div className={styles.EventInfoContainer} style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                       <p className={styles.EventInfo}>
                         {formatDateForEventInfo(event.datum)}, {event.stad}
                       </p>
-                      {/* Ticket button ook in dezelfde row */}
                       {event.ticketlink && (
                         <Link href={event.ticketlink} passHref>
                           <button className={styles.TicketButton}>
@@ -98,7 +91,6 @@ const Events: React.FC = () => {
         })}
       </div>
 
-      {/* Knop naar de volledige agenda */}
       <Link href="/events">
         <button className={styles.EventButton}>
           Volledige agenda <BsJournalBookmark />

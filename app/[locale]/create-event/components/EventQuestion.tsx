@@ -5,7 +5,7 @@ import styles from "../components/styles/EventQuestion.module.css";
 const EventQuestion = () => {
     return (
       <div className={styles.formContainer}>
-        <form action="add_event.php" method="post" enctype="multipart/form-data" acceptCharset="utf-8">
+        <form action="add_event.php" method="post" encType="multipart/form-data" acceptCharset="utf-8">
           {/* Jouw Naam */}
           <div className={styles.formGroup}>
             <label htmlFor="name" className={styles.formLabel}>Jouw Naam*</label>

@@ -225,12 +225,7 @@ const ModernEventFilter = ({ onFilterChange, onSearch, onApplyFilters }) => {
                 
                 {showDatePicker && (
                   <Box sx={{ width: '100%', mt: 2 }}>
-                    <DatePickerComponent
-                      startDate={selectedDateRanges[0] ? dayjs(selectedDateRanges[0]) : null}
-                      endDate={selectedDateRanges[1] ? dayjs(selectedDateRanges[1]) : null}
-                      onChange={handleDateRangeChange}
-                      onClose={() => setShowDatePicker(false)}
-                    />
+     
                   </Box>
                 )}
               </>

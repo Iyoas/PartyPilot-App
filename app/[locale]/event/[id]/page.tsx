@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import he from 'he';
 import styles from './EventDetails.module.css';
@@ -16,8 +16,9 @@ import { ImCross } from "react-icons/im"; // Het kruis-icoon
 
 const BASE_IMAGE_URL = "https://partypilot.nl/"; // Zorg ervoor dat de juiste URL hier staat
 
+
 const EventPage = () => {
-  const { id } = useParams(); // Haal de event_id uit de URL
+  const { locale, id } = useParams(); // Haal zowel de locale als event_id uit de URL
   const router = useRouter();
   const [event, setEvent] = useState<any>(null);  // Typen aanpassen voor dynamische data
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,7 +30,7 @@ const EventPage = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await fetch(`/api/fetchEvents`);
+        const res = await fetch(`/${locale}/api/fetchEvents`);  // Zorg ervoor dat we de locale gebruiken in de API URL
         if (!res.ok) throw new Error(`Kan evenementen niet laden, status: ${res.status}`);
         
         const data = await res.json();
@@ -52,22 +53,22 @@ const EventPage = () => {
       }
     };
     
-    if (id) {
-      fetchEvents(); // Haal de evenementen alleen op als er een id is
+    if (id && locale) {
+      fetchEvents(); // Haal de evenementen alleen op als er een id en locale is
     }
-  }, [id]);
+  }, [id, locale]);
   
 
   // Ga naar het volgende evenement
   const goToNextEvent = () => {
     const nextEventId = Number(id) + 1;
-    router.push(`/event/${nextEventId}`);
+    router.push(`/${locale}/event/${nextEventId}`);  // Zorg ervoor dat we de locale meenemen in de URL
   };
 
   // Ga naar het vorige evenement
   const goToPreviousEvent = () => {
     const prevEventId = Number(id) - 1;
-    router.push(`/event/${prevEventId}`);
+    router.push(`/${locale}/event/${prevEventId}`);  // Zorg ervoor dat we de locale meenemen in de URL
   };
 
   const handleFlyerClick = () => {
@@ -99,6 +100,7 @@ const EventPage = () => {
     const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short' };
     return date.toLocaleDateString('nl-NL', options);
   };
+
 
   return (
     <div>

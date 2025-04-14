@@ -18,7 +18,7 @@
     flex-shrink: 0; 
     width: 250px; 
     height: 350px;
-    background: #dfffce5a;
+    background: #cef4ff5a;
     border-radius: 8px;
     overflow: hidden;
     transition: transform 0.3s ease;
@@ -28,7 +28,7 @@
   
   .blogCard:hover {
     transform: translateY(-5px);
-    background: #dfffce85;
+    background: #cef4ff80;
   }
   
   .blogImage {

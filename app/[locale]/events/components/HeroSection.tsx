@@ -10,9 +10,10 @@ import ActiveFilters from './ActiveFilters';
 interface HeroSectionProps {
   onSearch: (searchTerm: string) => void;
   onApplyFilters: (filters: string[]) => void;
+  eventCount: number;
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({ onSearch, onApplyFilters }) => {
+const HeroSection: React.FC<HeroSectionProps> = ({ onSearch, onApplyFilters, eventCount }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
@@ -27,21 +28,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSearch, onApplyFilters }) =
   const [selectedLocations, setSelectedLocations] = useState<string[]>([]);
   const [selectedHolidays, setSelectedHolidays] = useState<string[]>([]);
 
-  useEffect(() => {
-    const fetchEvents = async () => {
-      try {
-        const res = await fetch("/api/fetchEvents");
-        if (!res.ok) throw new Error("Kan data niet laden");
-        const data = await res.json();
-        setFetchedEvents(data.evenementen);
-      } catch (err) {
-        console.error("Fout bij ophalen van evenementen:", err);
-      }
-    };
 
-    fetchEvents();
-  }, []);
-
+  // Sticky filter functionaliteit
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 250) {
@@ -57,6 +45,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSearch, onApplyFilters }) =
     };
   }, []);
 
+  // Zoeken submit handler
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchTerm.trim()) {
@@ -65,9 +54,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSearch, onApplyFilters }) =
     }
   };
 
+  // Filters toepassen
   const handleApplyFilters = (appliedFilters: string[]) => {
     onApplyFilters(appliedFilters);
-    // Update state for active filters
+    // Werk de filters bij in de state
     setSearchTerms(appliedFilters.filter(f => f.includes('searchTerm')));
     setSelectedDateRanges(appliedFilters.filter(f => f.includes('Datum')));
     setSelectedAgeRanges(appliedFilters.filter(f => f.includes('Leeftijd')));
@@ -77,11 +67,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onSearch, onApplyFilters }) =
     setSelectedHolidays(appliedFilters.filter(f => f.includes('Feestdag')));
   };
 
-  const eventCount = fetchedEvents.length;
 
   return (
     <div className={styles.HeroSection}>
-      <p className={styles.EventCount}><strong>{eventCount}</strong> aankomende feesten</p> 
+      <p className={styles.EventCount}><strong>{eventCount}</strong> aankomende feesten</p>
       <div className={styles.HeroSection2}>
         <h1 className={styles.HeroTitle}>De party agenda van Nederland</h1>
         <h6 className={styles.HeroSubtitle}>Vind de leukste events dichtbij jou met onze zoekfilters!</h6>

@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link'; 
 import styles from './styles/BlogSection.module.css';
-import mockData from '@/app/blog';  
+import mockData from '@/app/[locale]/blog';  
 import { CgEreader } from "react-icons/cg";
 import { MdArrowOutward } from "react-icons/md";
 

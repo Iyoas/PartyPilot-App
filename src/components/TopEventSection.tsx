@@ -6,46 +6,42 @@ import Link from 'next/link';
 import styles from './styles/TopEventSection.module.css';
 import { IoTicket } from "react-icons/io5";
 
-// Basis URL voor afbeeldingen
 const BASE_IMAGE_URL = "https://partypilot.nl/";
 
-const TopEventSection = () => {
+type Props = {
+  locale: string;
+};
+
+const TopEventSection = ({ locale }: Props) => {
   const [events, setEvents] = useState([]);
-  const [loading, setLoading] = useState(true); // Laadstatus toevoegen
+  const [loading, setLoading] = useState(true);
 
   const formatDateForDayHeader = (dateString: string) => {
     const date = new Date(dateString);
     const options: Intl.DateTimeFormatOptions = { weekday: 'long', day: 'numeric', month: 'long' };
-  
-    // Datum omzetten naar Nederlands formaat
     const formattedDate = date.toLocaleDateString('nl-NL', options);
-  
-    // Eerste letter van de datum naar hoofdletter
     return formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
   };
-  
 
   useEffect(() => {
     const fetchEvents = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`/api/fetchEvents`);
+        const res = await fetch(`/${locale}/api/fetchEvents`);
         if (!res.ok) throw new Error(`Kan evenementen niet laden, status: ${res.status}`);
 
         const data = await res.json();
         const evenementen = data.evenementen || [];
-
-        // Beperk tot 10 evenementen en update de state
         setEvents(evenementen.slice(0, 10));
       } catch (err) {
         console.error("Fout bij ophalen van evenementen:", err);
       } finally {
-        setLoading(false); // Stop loading na ophalen data
+        setLoading(false);
       }
     };
 
     fetchEvents();
-  }, []);
+  }, [locale]);
 
   return (
     <div className={styles.TopEventSection}>
@@ -61,13 +57,13 @@ const TopEventSection = () => {
                 <a className={styles.eventLink}>
                   <div className={styles.event}>
                     <Image
-                      src={`${BASE_IMAGE_URL}${event.event_image}`} // Correcte URL voor afbeelding
+                      src={`${BASE_IMAGE_URL}${event.event_image}`}
                       alt={event.evenement_naam}
                       layout="intrinsic"
                       className={styles.eventImage}
                       width={300}
                       height={150}
-                      unoptimized // Voorkom Next.js optimalisatie als de afbeeldingen extern worden gehost
+                      unoptimized
                     />
                     <div className={styles.eventDetails}>
                       <h2 className={styles.eventName}>{event.evenement_naam}</h2>
@@ -77,9 +73,10 @@ const TopEventSection = () => {
                     </div>
                   </div>
                   {event.ticketlink && (
-                        <button className={styles.TicketButton}>
-                          Ticket <IoTicket className={styles.TicketIcon} />
-                        </button> )}
+                    <button className={styles.TicketButton}>
+                      Ticket <IoTicket className={styles.TicketIcon} />
+                    </button>
+                  )}
                 </a>
               </Link>
             ))
