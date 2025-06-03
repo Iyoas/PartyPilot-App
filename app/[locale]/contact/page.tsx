@@ -1,7 +1,7 @@
 "use client";
 
 import Layout from '../layout';
-
+import styles from './EventDetails.module.css';
 
 export default function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
