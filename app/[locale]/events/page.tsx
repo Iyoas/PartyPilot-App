@@ -1,7 +1,6 @@
 "use client";
-import { redirect } from 'next/navigation';
-import { useParams } from 'next/navigation';  // Import voor params
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 import Layout from '../layout';
 import FilterSection from './components/FilterSection';
@@ -21,11 +20,7 @@ type PageProps = {
 
 export default function EventsPage({ params }: PageProps) {
   const { locale } = params;
-
-  if (locale === 'default') {
-    redirect('/nl');
-    return null;
-  }
+  const router = useRouter();
 
   const [searchTerms, setSearchTerms] = useState([]);
   const [selectedDateRanges, setSelectedDateRanges] = useState([]);
@@ -34,7 +29,13 @@ export default function EventsPage({ params }: PageProps) {
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [selectedLocations, setSelectedLocations] = useState([]);
   const [selectedHolidays, setSelectedHolidays] = useState([]);
-  const [eventCount, setEventCount] = useState(0); // Voeg eventCount toe
+  const [eventCount, setEventCount] = useState(0);
+
+  useEffect(() => {
+    if (locale === 'default') {
+      router.push('/nl');
+    }
+  }, [locale, router]);
 
   const handleApplyFilters = (appliedFilters) => {
     if (appliedFilters.dates) setSelectedDateRanges(appliedFilters.dates);
@@ -80,7 +81,7 @@ export default function EventsPage({ params }: PageProps) {
           locale={locale}
           onSearch={(searchTerm) => setSearchTerms([...searchTerms, searchTerm])}
           onApplyFilters={handleApplyFilters}
-          eventCount={eventCount} // Geef eventCount door aan HeroSection
+          eventCount={eventCount}
         />
         <ActiveFilters
           filters={{
@@ -95,7 +96,7 @@ export default function EventsPage({ params }: PageProps) {
           onRemoveFilter={handleRemoveFilter}
         />
         <TopEventSection locale={locale} />
-        <Events locale={locale} setEventCount={setEventCount} /> {/* Geef setEventCount door */}
+        <Events locale={locale} setEventCount={setEventCount} />
         <BlogSection />
         <SocialCard />
       </div>
