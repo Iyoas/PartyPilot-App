@@ -7,8 +7,6 @@
     gap:2em;
     background-color: var(--main-color);
     min-height: 40vh;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
 }
 
 .HeroSection2{
