@@ -171,13 +171,14 @@ const EventPage = () => {
           </div>
           <div className={styles.Section}>
             <div>
-              {event.extra_info && event.extra_info.trim() !== "" ? (
-                event.extra_info.split(/<br\s*\/?>/g).map((line, index) =>
-                  line.trim() ? <p key={index}>{line}</p> : <br key={index} />
-                )
-              ) : (
-                <p>Geen extra info beschikbaar</p>
-              )}
+            {event.extra_info && event.extra_info.trim() !== "" ? (
+              event.extra_info.split(/<br\s*\/?>/g).map((line: string, index: number) =>
+                line.trim() ? <p key={index}>{line}</p> : <br key={index} />
+              )
+            ) : (
+              <p>Geen extra info beschikbaar</p>
+            )}
+
             </div>
 
           </div>
@@ -191,9 +192,10 @@ const EventPage = () => {
           <div className={styles.Section}>
             {event.lineup && event.lineup.trim() !== "" ? (
               <ul className={styles.LineupList}>
-                {event.lineup.split(/<br\s*\/?>/g).map((line, index) =>
+                {event.lineup.split(/<br\s*\/?>/g).map((line: string, index: number) =>
                   line.trim() ? <li key={index}>{he.decode(line)}</li> : null
                 )}
+
               </ul>
             ) : (
               <p>Line-up niet beschikbaar</p>
